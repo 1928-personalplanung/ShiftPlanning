@@ -49,7 +49,4 @@ export class DetailDrawerComponent implements OnInit {
 
   }
 
-  upMe() {
-    this.modal.open ( 'modalB' );
-  }
 }

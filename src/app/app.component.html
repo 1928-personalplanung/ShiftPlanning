@@ -12,10 +12,7 @@
     </a>
     -->
 
-    <div *ngIf="$modal.showModal$ | async" class="modal-container">
-      <button (click)="$modal.closeModal()">x</button>
-      <router-outlet name="modal"></router-outlet>
-    </div>
+
 
     <router-outlet></router-outlet>
 
@@ -30,7 +27,9 @@
 
 </mat-drawer-container>
 
-
+<div *ngIf="$modal.showModal$ | async" class="modal-container">
+  <router-outlet name="modal"></router-outlet>
+</div>
 
 
 <!--

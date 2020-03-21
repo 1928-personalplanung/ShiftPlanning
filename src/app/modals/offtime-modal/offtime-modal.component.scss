@@ -1,0 +1,18 @@
+
+::ng-deep .mat-card-header-text{
+  flex-grow: 1;
+}
+:host(sp-offtime-modal) {
+  mat-card {
+    width: 500px;
+    min-height: 200px;
+
+    mat-card-header {
+
+      h3{
+        flex-grow: 1;
+      }
+
+    }
+  }
+}

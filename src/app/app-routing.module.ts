@@ -4,11 +4,12 @@ import { DelMeLaterAComponent } from './del-me-later/del-me-later-a/del-me-later
 import { DelMeLaterBComponent } from './del-me-later/del-me-later-b/del-me-later-b.component';
 import { DelMeLaterCComponent } from './del-me-later/del-me-later-c/del-me-later-c.component';
 import { DetailDrawerComponent } from './details/detail-drawer/detail-drawer.component';
+import { OfftimeModalComponent } from './modals/offtime-modal/offtime-modal.component';
 
 const routes: Routes = [
   { path: '', component: DelMeLaterAComponent },
-  { path: 'modalB',
-    component: DelMeLaterBComponent,
+  { path: 'offtime',
+    component: OfftimeModalComponent,
     outlet: 'modal' },
   { path: 'drawerC',
     component: DetailDrawerComponent,
