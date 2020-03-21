@@ -1,11 +1,14 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { AppDrawerCtrlService } from '../../app-drawer-ctrl.service';
+import { Subscription, timer } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
   templateUrl: './detail-drawer.component.html',
   styleUrls  : ['./detail-drawer.component.scss']
 } )
-export class DetailDrawerComponent implements OnInit {
+export class DetailDrawerComponent implements OnInit, OnDestroy {
 
   @HostBinding ( 'class.open' ) open = false;
 
@@ -26,11 +29,33 @@ export class DetailDrawerComponent implements OnInit {
     ]
   };
 
-  constructor() {
+  private sub: Subscription;
+
+  constructor( public drawer: AppDrawerCtrlService ) {
+
+    this.sub = this.drawer.showDrawer$
+
+                   .pipe ( delay ( 100 ) )
+                   .subscribe ( ( value ) => {
+                     console.log ( value );
+                     this.open = value;
+
+                   } );
+  }
+
+  close() {
+
+    this.open = false;
+    timer ( 1000 )
+      .subscribe ( () => this.drawer.closeDrawer () );
   }
 
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe ();
   }
 
 }
