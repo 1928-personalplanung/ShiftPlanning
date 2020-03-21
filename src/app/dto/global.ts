@@ -1,9 +1,8 @@
+import { DateType, IdType } from './global-types';
+
 export interface Global {
   em: string;
 }
-
-export declare type IdType = number | string;
-export declare type DateType = Date | string;
 
 export interface TagType {
   id: IdType;
