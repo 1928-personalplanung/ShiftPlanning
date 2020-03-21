@@ -2,6 +2,8 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { AppDrawerCtrlService } from '../../app-drawer-ctrl.service';
 import { Subscription, timer } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AppModalCtrlService } from '../../app-modal-ctrl.service';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
@@ -34,7 +36,7 @@ export class DetailDrawerComponent implements OnInit {
     ]
   };
 
-  constructor( public drawer: AppDrawerCtrlService ) {
+  constructor( public drawer: AppDrawerCtrlService, public modal: AppModalCtrlService ) {
 
 
   }
@@ -47,5 +49,7 @@ export class DetailDrawerComponent implements OnInit {
 
   }
 
-
+  upMe() {
+    this.modal.open ( 'modalB' );
+  }
 }

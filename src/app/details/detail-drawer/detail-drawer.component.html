@@ -39,7 +39,7 @@
         <li>Urlaub - 10.10.2010</li>
         <li>Urlaub - 10.10.2010</li>
       </ul>
-      <button mat-fab [routerLink]="[ { outlets: { modal: ['modalB'] } } ]"><i class="material-icons">add</i></button>
+      <button mat-fab (click)="modal.open('modalB')"><i class="material-icons">add</i></button>
     </div>
   </div>
 </div>

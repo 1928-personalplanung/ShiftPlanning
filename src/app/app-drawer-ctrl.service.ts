@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
-import { distinctUntilChanged, filter, map } from 'rxjs/operators';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppDrawerCtrlService {
-  showDrawer$ = new Subject<boolean> ();
+  showDrawer$ = new BehaviorSubject<boolean> (false);
 
   constructor( private $router: Router ) {
     this.init();
@@ -18,12 +18,17 @@ export class AppDrawerCtrlService {
            .pipe(
              filter( event => event instanceof ActivationEnd),
              map ( event => (event as ActivationEnd).snapshot.outlet === 'drawer' ),
-             distinctUntilChanged()
+             filter ( value => value === true )
            )
            .subscribe( this.showDrawer$ );
   }
 
   closeDrawer() {
     this.$router.navigate( [ { outlets: { drawer:  null  } } ] );
+    this.showDrawer$.next( false );
+  }
+
+  open( path: string ) {
+    this.$router.navigate( [  { outlets: { drawer:  [path]  } } ] );
   }
 }

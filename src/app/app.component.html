@@ -1,13 +1,17 @@
 <mat-drawer-container>
   <mat-drawer-content>
-    <h1>run</h1>
 
+    <h1 (click)="$drawer.open('drawerC')">run</h1>
+
+    <!--
     <a [routerLink]="[ { outlets: { modal: ['modalB'] } } ]">
       open ModalBComp
     </a>
     <a [routerLink]="[ { outlets: { drawer: ['drawerC'] } } ]">
       open ModalBComp
     </a>
+    -->
+
     <div *ngIf="$modal.showModal$ | async" class="modal-container">
       <button (click)="$modal.closeModal()">x</button>
       <router-outlet name="modal"></router-outlet>
@@ -21,9 +25,17 @@
     <router-outlet name="drawer"></router-outlet>
   </mat-drawer>
 
+
+
+
 </mat-drawer-container>
 
 
+
+
+<!--
+<router-outlet name="drawer"></router-outlet>
+-->
 
 
 
