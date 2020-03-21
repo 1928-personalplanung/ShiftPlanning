@@ -1,19 +1,28 @@
-<h1>run</h1>
+<mat-drawer-container>
+  <mat-drawer-content>
+    <h1>run</h1>
 
-<a [routerLink]="[ { outlets: { modal: ['modalB'] } } ]">
-  open ModalBComp
-</a>
-<a [routerLink]="[ { outlets: { drawer: ['drawerC'] } } ]">
-  open ModalBComp
-</a>
+    <a [routerLink]="[ { outlets: { modal: ['modalB'] } } ]">
+      open ModalBComp
+    </a>
+    <a [routerLink]="[ { outlets: { drawer: ['drawerC'] } } ]">
+      open ModalBComp
+    </a>
+    <div *ngIf="$modal.showModal$ | async" class="modal-container">
+      <button (click)="$modal.closeModal()">x</button>
+      <router-outlet name="modal"></router-outlet>
+    </div>
+
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+  <mat-drawer mode="over" [opened]="$drawer.showDrawer$ | async" position="end" disableClose>
+
+    <router-outlet name="drawer"></router-outlet>
+  </mat-drawer>
+
+</mat-drawer-container>
 
 
 
-<router-outlet></router-outlet>
 
-<div *ngIf="$modal.showModal$ | async" class="modal-container">
-  <button (click)="$modal.closeModal()">x</button>
-  <router-outlet name="modal"></router-outlet>
-</div>
 
-<router-outlet name="drawer"></router-outlet>
