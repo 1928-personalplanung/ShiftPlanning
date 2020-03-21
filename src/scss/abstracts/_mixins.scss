@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// On event hover active focus
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @content Inside pseudo classes
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @param {String} $context
+/// @content Inside $context <current-class>
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/// MediaQuery from $breakpoints map
+/// @param {String} $range
+/// @require $mediaqueries
+/// @content Inside MediaQuery
+/// @group mediaqueries
+@mixin media($range) {
+  @if map-has-key($mediaqueries, $range) {
+    @media #{map-get($mediaqueries, $range)} {
+      @content;
+    }
+  } @else {
+    @error 'Unfortunately, no MediaQuery could be retrieved for `#{$range}`. '
+      + 'Please try one of these: `#{map-keys($mediaqueries)}`';
+  }
+}

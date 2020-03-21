@@ -1,0 +1,12 @@
+{
+  "package": "./package.json",
+  "groups": {
+    "undefined": "1. General",
+    "mediaqueries": "2. Media Queries",
+    "material": "3. Angular Material"
+  },
+  "sort": [
+    "group>"
+  ],
+  "basePath": "https://vc.nettrek.biz/sliebehenz/angular-boilerplate/blob/master"
+}

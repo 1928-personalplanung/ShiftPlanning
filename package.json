@@ -1,0 +1,90 @@
+{
+  "name": "ngx-boiler",
+  "version": "0.4.3",
+  "scripts": {
+    "start": "ng serve --open --watch --host 0.0.0.0",
+    "start:prod": "ng serve --prod --open --watch --host 0.0.0.0",
+    "build": "ng build",
+    "build:prod": "ng build  --prod",
+    "build:report": "ng build --prod --optimization false --output-hashing 'none' --source-map true --named-chunks true --stats-json && webpack-bundle-analyzer dist/ngx-boiler/stats-es5.json",
+    "build:clean": "rm -rf dist dist-aot",
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --source-map=false --code-coverage",
+    "lint": "npm run lint:ts && npm run lint:scss",
+    "lint:ts": "ng lint",
+    "lint:scss": "stylelint 'src/**/*.scss'",
+    "e2e": "ng e2e",
+    "e2e:ci": "ng e2e --protractorConfig=./e2e/protractor.ci.conf.js",
+    "release": "standard-version -a",
+    "document": "npm run document:ts && npm run document:scss",
+    "document:ts": "compodoc -p ./tsconfig.app.json",
+    "document:scss": "sassdoc src/** -c ./.sassdoc.json",
+    "document:clean": "rm -rf documentation && rm -rf sassdoc"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "if git-branch-is -r \"(master|develop)\"; then commitlint -E HUSKY_GIT_PARAMS; fi"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm run lint && npm run test:ci",
+      "posttag": "git push --follow-tags origin master"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.0.4",
+    "@angular/cdk": "^9.1.0",
+    "@angular/common": "~9.0.4",
+    "@angular/compiler": "~9.0.4",
+    "@angular/core": "~9.0.4",
+    "@angular/forms": "~9.0.4",
+    "@angular/material": "^9.1.0",
+    "@angular/platform-browser": "~9.0.4",
+    "@angular/platform-browser-dynamic": "~9.0.4",
+    "@angular/router": "~9.0.4",
+    "@sentry/browser": "^5.12.4",
+    "@w11k/ngx-componentdestroyed": "^4.1.5",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.4",
+    "@angular/cli": "~9.0.4",
+    "@angular/compiler-cli": "~9.0.4",
+    "@angular/language-service": "~9.0.4",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@compodoc/compodoc": "^1.1.11",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@w11k/rx-ninja": "^4.0.2",
+    "codelyzer": "^5.1.2",
+    "conventional-changelog-angular": "^5.0.6",
+    "conventional-changelog-cli": "^2.0.31",
+    "ftp-deploy": "^2.3.6",
+    "git-branch-is": "^3.1.0",
+    "husky": "^4.2.3",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-junit-reporter": "^2.0.1",
+    "protractor": "~5.4.3",
+    "sassdoc": "^2.7.1",
+    "standard-version": "^7.1.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-high-performance-animation": "^1.4.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.7.5",
+    "webpack-bundle-analyzer": "^3.4.1"
+  }
+}

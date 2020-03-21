@@ -1,0 +1,193 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// General font color
+/// @type String
+$general-color: #777;
+
+/// General font size
+/// @type Number
+$general-font-size: 13px;
+
+/// General font family
+/// @type List
+$general-font-family: Roboto, sans-serif;
+
+/// General font weight
+/// @type Number
+$general-font-weight: 400;
+
+/// General line-height
+/// @type Number
+$general-line-height: 1.25;
+
+/// Font shorthand with all general styles
+/// @type String
+$general-font: $general-font-weight #{$general-font-size}/#{$general-line-height} $general-font-family;
+
+/// General font color
+/// @type String
+$link-color: #771b1f;
+
+
+
+/// REM Base size
+/// @type Number
+$rem-base: $general-font-size;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @group mediaqueries
+$breakpoints: breakpoints-to-em((
+  s: 767,
+  m: 1024,
+  l: 99999
+));
+
+/// mediaqueries map which can be used with the media mixin.
+/// Names get extended from the breakpoints map. <breakpoint-name>-up, <breakpoint-name>-only, <breakpoint-name>-down
+/// example 's-up' 'm-only'
+/// @group mediaqueries
+$mediaqueries: breakpoints-to-mediaqueries($breakpoints);
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
+
+
+
+/// Custom Theming for Angular Material
+/// Plus imports for other components in your app.
+/// For more information: https://material.angular.io/guide/theming
+/// Needs to be here so the mat- mixins are working
+@import '~@angular/material/theming';
+
+/// Custom Material Design palette
+/// @group material
+$mat-ngx-boiler-primary: (
+  50 : #e7e7e7,
+  100 : #c4c4c4,
+  200 : #9c9c9c,
+  300 : #747474,
+  400 : #474747,
+  500 : #393939,
+  600 : #333,
+  700 : #2c2c2c,
+  800 : #242424,
+  900 : #171717,
+  A100 : #ef7171,
+  A200 : #ea4343,
+  A400 : #fa0000,
+  A700 : #e00000,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #fff,
+    400 : #fff,
+    500 : #fff,
+    600 : #fff,
+    700 : #fff,
+    800 : #fff,
+    900 : #fff,
+    A100 : #000,
+    A200 : #fff,
+    A400 : #fff,
+    A700 : #fff,
+  )
+);
+
+/// Custom Material Design palette
+/// @group material
+$mat-ngx-boiler-accent: (
+  50 : #fdede5,
+  100 : #fbd1bf,
+  200 : #f8b294,
+  300 : #f59369,
+  400 : #f37c49,
+  500 : #f16529,
+  600 : #ef5d24,
+  700 : #ed531f,
+  800 : #eb4919,
+  900 : #e7370f,
+  A100 : #fff,
+  A200 : #ffe4e0,
+  A400 : #ffb9ad,
+  A700 : #ffa493,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #000,
+    400 : #000,
+    500 : #000,
+    600 : #000,
+    700 : #fff,
+    800 : #fff,
+    900 : #fff,
+    A100 : #000,
+    A200 : #000,
+    A400 : #000,
+    A700 : #000,
+  )
+);
+
+/// Custom Material Design palette
+/// @group material
+$mat-ngx-boiler-warn: (
+  50 : #fdede5,
+  100 : #fbd1bf,
+  200 : #f8b294,
+  300 : #f59369,
+  400 : #f37c49,
+  500 : #f16529,
+  600 : #ef5d24,
+  700 : #ed531f,
+  800 : #eb4919,
+  900 : #e7370f,
+  A100 : #fff,
+  A200 : #ffe4e0,
+  A400 : #ffb9ad,
+  A700 : #ffa493,
+  contrast: (
+    50 : #000,
+    100 : #000,
+    200 : #000,
+    300 : #000,
+    400 : #000,
+    500 : #000,
+    600 : #000,
+    700 : #fff,
+    800 : #fff,
+    900 : #fff,
+    A100 : #000,
+    A200 : #000,
+    A400 : #000,
+    A700 : #000,
+  )
+);
+
+/// Define the primary palette for your theme using the Material Design palettes.
+/// For each palette, you can optionally specify a default, lighter, and darker hue.
+/// @group material
+$ngx-boiler-primary: mat-palette($mat-ngx-boiler-primary);
+
+/// Define the accent palette for your theme using the Material Design palettes.
+/// For each palette, you can optionally specify a default, lighter, and darker hue.
+/// @group material
+$ngx-boiler-accent: mat-palette($mat-ngx-boiler-accent, A200, A100, A400);
+
+/// Define the optional warn palette for your theme using the Material Design palettes (default red).
+/// For each palette, you can optionally specify a default, lighter, and darker hue.
+/// @group material
+$ngx-boiler-warn: mat-palette($mat-ngx-boiler-warn);
+
+/// Create the theme object (a Sass map containing all of the palettes).
+/// @group material
+$ngx-boiler-theme: mat-light-theme($ngx-boiler-primary, $ngx-boiler-accent, $ngx-boiler-warn);

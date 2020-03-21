@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains SCSS helper classes.
+// -----------------------------------------------------------------------------
+
+/// Clear inner floats
+%clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/// Auto word wrap
+%hyphens {
+  hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

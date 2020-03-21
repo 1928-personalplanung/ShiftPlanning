@@ -1,0 +1,171 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+  @return asset($base, 'images/', $path);
+}
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+  @return asset($base, 'fonts/', $path);
+}
+
+/// Returns the striped unit of measure
+/// @param {Number} $num - number with a unit
+/// @return {String}
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/// Extract single value from multi-property
+/// @param {String} $shorthand - shorthand property
+/// @param {String} $type - a unit that is present in the shorthand property
+/// @return {Number}
+@function get-val-from-short-prop($shorthand, $type) {
+  @each $value in $shorthand {
+    @if (type_of($value) == $type) {
+      @return $value;
+    }
+  }
+
+  @error 'Could not find `#{$type}` in `#{$shorthand}`.';
+}
+
+/// Convert size number to rem value
+/// @param {Number} $value - a size number
+/// @param {Number} $base-value [$rem-base] - rem base value
+/// @return {Number}
+/// @require $rem-base
+/// @require strip-unit
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+
+  /* Turn 0rem into 0*/
+  /* stylelint-disable-next-line length-zero-no-unit */
+  @if ($value == 0rem) {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+/// Convert list of size numbers to rem values
+/// @param {List} $values - a list of 1 - 4 size numbers
+/// @param {Number} $base-value [$rem-base] - rem base value
+/// @return {Number}
+/// @require $rem-base
+/// @require convert-to-rem
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  $rem-values: ();
+
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1), $base-value);
+  }
+
+  @for $i from 1 through $max {
+    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+  }
+
+  @return $rem-values;
+}
+
+/// Convert list of size numbers to em values
+/// @param {List} $values - a list of 1 - 4 size numbers
+/// @return {Number}
+/// @require rem-calc
+/// @require strip-unit
+@function em-calc($values) {
+  $rem-values: rem-calc($values);
+
+  $max: length($rem-values);
+
+  $em-values: ();
+
+  @if $max == 1 {
+    @return strip-unit(nth($rem-values, 1)) * 1em;
+  }
+
+  @for $i from 1 through $max {
+    $em-values: append($em-values, strip-unit(nth($rem-values, $i)) * 1em);
+  }
+
+  @return $em-values;
+}
+
+/// Takes a $breakpoints map and converts it to em values. Null values will be replaced with 999999999px
+/// @param {Map} $breakpoints-map - a map of breakpoint-name => upper breakpoint in px
+/// @return {Map}
+/// @require em-calc
+/// @group mediaqueries
+@function breakpoints-to-em($breakpoints-map) {
+  @each $breakname, $breaksize in $breakpoints-map {
+    @if ($breaksize == null) {
+      $breaksize: 99999999;
+    }
+    $breaksize: em-calc($breaksize);
+    $breakpoints-map: map_merge($breakpoints-map, ($breakname: $breaksize));
+  }
+
+  @return $breakpoints-map;
+}
+
+/// Takes a $breakpoints map and generates the corresponding media querry map.
+/// @param {Map} $breakpoints-map - a map of breakpoint-name => upper breakpoint size
+/// @return {Map}
+/// @require em-calc
+/// @group mediaqueries
+@function breakpoints-to-mediaqueries($breakpoints-map) {
+  $screen: 'only screen';
+  $mediaqueries-map: (
+    landscape: '#{$screen} and (orientation: landscape)',
+    portrait: '#{$screen} and (orientation: portrait)'
+  );
+
+  $pre-breaksize: 0;
+
+  @each $breakname, $breaksize in $breakpoints-map {
+    $i: index($breakpoints-map, ($breakname $breaksize));
+
+    //First Breakpoint
+    @if ($i == 1) {
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-up: $screen));
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-only: '#{$screen} and (max-width: #{$breaksize})'));
+
+      //Last Breakpoint
+    } @else if ($i == length($breakpoints-map)) {
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-up: '#{$screen} and (min-width:#{$pre-breaksize})'));
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-only: '#{$screen} and (min-width:#{$pre-breaksize}) and (max-width:#{$breaksize})'));
+
+      //normal Breakpoint
+    } @else {
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-up: '#{$screen} and (min-width:#{$pre-breaksize})'));
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-down: '#{$screen} and (max-width:#{$breaksize})'));
+      $mediaqueries-map: map-merge($mediaqueries-map, (#{$breakname}-only: '#{$screen} and (min-width:#{$pre-breaksize}) and (max-width:#{$breaksize})'));
+    }
+
+    $pre-breaksize: $breaksize + em-calc(1);
+  }
+
+  @return $mediaqueries-map;
+}
