@@ -1,0 +1,67 @@
+@import '../../scss/component';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+
+.main-view-headline {
+  display: flex;
+  flex: 0 0 80px;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.main-view-date-select {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+    padding: 0 10px;
+
+    line-height: 2;
+  }
+}
+
+.main-view-workerlist {
+  flex: 0 0 150px;
+  padding: 10px;
+}
+
+.main-view-grid {
+  flex: 1 1 auto;
+  padding: 0 10px;
+}
+
+.grid-row--headline,
+.grid-row {
+  display: flex;
+  flex-direction: row;
+
+  div:not(.grid-label) {
+    flex: 0 0 6.8%;
+  }
+}
+
+.grid-row--headline {
+  div {
+    text-align: center;
+  }
+}
+
+.grid-row {
+  div:not(.grid-label) {
+    height: 150px;
+
+    border: solid 1px lightgray;
+  }
+}
+
+.grid-label {
+  flex: 0 0 3%;
+}

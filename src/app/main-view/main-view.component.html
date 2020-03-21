@@ -1,0 +1,51 @@
+<div class="main-view-headline">
+  <mat-form-field>
+    <input type="text" matInput placeholder="Station" [formControl]="stationControl"  [matAutocomplete]="stationAuto">
+  </mat-form-field>
+
+  <mat-autocomplete #stationAuto="matAutocomplete">
+    <mat-option *ngFor="let station of stations" [value]="station.id">{{station.label}}</mat-option>
+  </mat-autocomplete>
+
+  <div class="main-view-date-select">
+    <button mat-icon-button aria-label="Example icon-button with a heart icon">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <h2>09.02.20 - 22.02.20</h2>
+
+    <button mat-icon-button aria-label="Example icon-button with a heart icon">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
+
+<ng-container cdkDropListGroup>
+  <div class="main-view-workerlist">
+    <mat-form-field>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput placeholder="Angestellte">
+    </mat-form-field>
+
+    <mat-chip-list cdkDropList [cdkDropListData]="workers">
+      <mat-chip *ngFor="let worker of workers" cdkDrag (click)="showDeatails(worker.id)">{{worker.label}}</mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div class="main-view-grid">
+    <div class="grid-row--headline">
+      <div class="grid-label"></div>
+
+      <div *ngFor="let day of days">{{day}}</div>
+    </div>
+
+    <div class="grid-row" *ngFor="let shiftGroup of shiftGroups">
+      <div class="grid-label">{{shiftGroup.label}}</div>
+
+      <div *ngFor="let shift of shiftGroup.shifts"
+           cdkDropList [cdkDropListData]="shift.workers" (cdkDropListDropped)="dropOnShift(shift, $event)">
+        <mat-chip *ngFor="let worker of shift.workers" cdkDrag>{{worker.label}}</mat-chip>
+      </div>
+    </div>
+  </div>
+</ng-container>
