@@ -3,7 +3,7 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-boiler": {
+    "shift-planning": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "ngx-prefix",
+      "prefix": "sp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-boiler",
+            "outputPath": "dist/shift-planning",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-boiler:build"
+            "browserTarget": "shift-planning:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-boiler:build:production"
+              "browserTarget": "shift-planning:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-boiler:build"
+            "browserTarget": "shift-planning:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-boiler:serve"
+            "devServerTarget": "shift-planning:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-boiler:serve:production"
+              "devServerTarget": "shift-planning:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "ngx-boiler"
+  "defaultProject": "shift-planning"
 }

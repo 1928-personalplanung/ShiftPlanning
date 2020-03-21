@@ -1,12 +1,12 @@
 {
-  "name": "ngx-boiler",
-  "version": "0.4.3",
+  "name": "shift-planning",
+  "version": "0.0.1",
   "scripts": {
     "start": "ng serve --open --watch --host 0.0.0.0",
     "start:prod": "ng serve --prod --open --watch --host 0.0.0.0",
     "build": "ng build",
     "build:prod": "ng build  --prod",
-    "build:report": "ng build --prod --optimization false --output-hashing 'none' --source-map true --named-chunks true --stats-json && webpack-bundle-analyzer dist/ngx-boiler/stats-es5.json",
+    "build:report": "ng build --prod --optimization false --output-hashing 'none' --source-map true --named-chunks true --stats-json && webpack-bundle-analyzer dist/shift-planning/stats-es5.json",
     "build:clean": "rm -rf dist dist-aot",
     "test": "ng test",
     "test:ci": "ng test --watch=false --source-map=false --code-coverage",

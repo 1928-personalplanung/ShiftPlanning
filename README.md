@@ -2,10 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
-To use this boilerplate search project wide for `ngx-boiler` and replace it with your app name. Search project wide for `ngx-prefix` and replace it with your app prefix. Then change the `basePath` inside the `.sassdoc.json` to your repository.
-
-If you want to use Sentry add your config in `src/app/sentry.error-handler.ts` and activate it in `src/app/app.module.ts`.
-
 ## 📋 Workflow
 
 ### Development

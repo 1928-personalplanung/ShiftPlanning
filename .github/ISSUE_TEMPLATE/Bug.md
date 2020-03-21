@@ -1,3 +1,10 @@
+---
+name: Bug
+about: Use this template for tracking bug.
+title: "Bug:"
+labels: "Type: Bug", "Status: Needs triage"
+---
+
 # Bug
 
 ## Current behavior
@@ -15,7 +22,7 @@
 ## Versions
 <!-- Enter versions and check the affected browsers [-] -->
 ```
-ngx-boiler: X.Y.Z
+shift-planning: X.Y.Z
 
 browsers:
 - [] Chrome (desktop) version XX
@@ -26,5 +33,3 @@ browsers:
 - [] IE version XX
 - [] Edge version XX
 ```
-
-/label ~bugfix

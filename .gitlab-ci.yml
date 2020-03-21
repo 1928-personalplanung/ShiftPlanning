@@ -1,11 +1,11 @@
 image: nettreksl/alpine-node-ssh-chrome:1.2.0
 
 variables:
-  DIST_PATH: "dist/ngx-boiler"
+  DIST_PATH: "dist/shift-planning"
   DOC_PATH: "documentation"
   SASSDOC_PATH: "sassdoc"
   COVERAGE_PATH: "coverage"
-  KARMA_RES_PATH: "karma/ngx-boiler/test-results.xml"
+  KARMA_RES_PATH: "karma/shift-planning/test-results.xml"
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}

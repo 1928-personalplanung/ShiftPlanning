@@ -17,7 +17,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/ngx-boiler'),
+      dir: require('path').join(__dirname, './coverage/shift-planning'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
@@ -36,7 +36,7 @@ module.exports = function (config) {
     browserNoActivityTimeout: 50000,
 
     junitReporter: {
-      outputDir: require('path').join(__dirname, './karma/ngx-boiler'),
+      outputDir: require('path').join(__dirname, './karma/shift-planning'),
       outputFile: 'test-results.xml',
       useBrowserName: false
     },

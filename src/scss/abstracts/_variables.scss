@@ -70,7 +70,7 @@ $base-url: '/assets/' !default;
 
 /// Custom Material Design palette
 /// @group material
-$mat-ngx-boiler-primary: (
+$mat-shift-planning-primary: (
   50 : #e7e7e7,
   100 : #c4c4c4,
   200 : #9c9c9c,
@@ -105,7 +105,7 @@ $mat-ngx-boiler-primary: (
 
 /// Custom Material Design palette
 /// @group material
-$mat-ngx-boiler-accent: (
+$mat-shift-planning-accent: (
   50 : #fdede5,
   100 : #fbd1bf,
   200 : #f8b294,
@@ -140,7 +140,7 @@ $mat-ngx-boiler-accent: (
 
 /// Custom Material Design palette
 /// @group material
-$mat-ngx-boiler-warn: (
+$mat-shift-planning-warn: (
   50 : #fdede5,
   100 : #fbd1bf,
   200 : #f8b294,
@@ -176,18 +176,18 @@ $mat-ngx-boiler-warn: (
 /// Define the primary palette for your theme using the Material Design palettes.
 /// For each palette, you can optionally specify a default, lighter, and darker hue.
 /// @group material
-$ngx-boiler-primary: mat-palette($mat-ngx-boiler-primary);
+$shift-planning-primary: mat-palette($mat-shift-planning-primary);
 
 /// Define the accent palette for your theme using the Material Design palettes.
 /// For each palette, you can optionally specify a default, lighter, and darker hue.
 /// @group material
-$ngx-boiler-accent: mat-palette($mat-ngx-boiler-accent, A200, A100, A400);
+$shift-planning-accent: mat-palette($mat-shift-planning-accent, A200, A100, A400);
 
 /// Define the optional warn palette for your theme using the Material Design palettes (default red).
 /// For each palette, you can optionally specify a default, lighter, and darker hue.
 /// @group material
-$ngx-boiler-warn: mat-palette($mat-ngx-boiler-warn);
+$shift-planning-warn: mat-palette($mat-shift-planning-warn);
 
 /// Create the theme object (a Sass map containing all of the palettes).
 /// @group material
-$ngx-boiler-theme: mat-light-theme($ngx-boiler-primary, $ngx-boiler-accent, $ngx-boiler-warn);
+$shift-planning-theme: mat-light-theme($shift-planning-primary, $shift-planning-accent, $shift-planning-warn);

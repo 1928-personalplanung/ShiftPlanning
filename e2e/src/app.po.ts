@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('ngx-prefix-root .content span')).getText() as Promise<string>;
+    return element(by.css('sp-root .content span')).getText() as Promise<string>;
   }
 }

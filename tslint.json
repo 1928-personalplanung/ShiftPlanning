@@ -18,7 +18,7 @@
     "component-selector": [
       true,
       "element",
-      "ngx-prefix",
+      "sp",
       "kebab-case"
     ],
     "import-blacklist": [

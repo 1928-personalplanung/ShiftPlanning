@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(page.getTitleText()).toEqual('ngx-boiler app is running!');
+    expect(page.getTitleText()).toEqual('shift-planning app is running!');
   });
 
   afterEach(async () => {

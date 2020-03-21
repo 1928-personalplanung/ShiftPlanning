@@ -1,3 +1,10 @@
+---
+name: Feature
+about: Use this template for tracking bug.
+title: "Feature:"
+labels: "Type: Feature", "Status: Needs triage"
+---
+
 # Feature
 
 ## Current behavior
@@ -11,7 +18,5 @@
 ## Versions
 <!-- Add versions -->
 ```
-ngx-boiler: X.Y.Z
+shift-planning: X.Y.Z
 ```
-
-/label ~feature
