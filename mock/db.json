@@ -895,7 +895,12 @@
         }
       ],
       "startDate": 1584856500,
-      "endDate": 1584888600
+      "endDate": 1584888600,
+      "forLocalMockWorkerIDs": [
+        1,
+        11,
+        12
+      ]
     }
   ]
 }

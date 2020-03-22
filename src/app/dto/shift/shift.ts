@@ -1,5 +1,5 @@
-import { Worker } from './worker';
-import { Constrain } from './constrain';
+import { Worker } from '../worker/worker';
+import { Constrain } from '../constrain';
 
 export interface Shift {
   id: number;

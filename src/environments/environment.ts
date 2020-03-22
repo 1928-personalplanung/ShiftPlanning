@@ -4,7 +4,18 @@
 
 export const environment = {
   production: false,
-  version: require('../../package.json').version
+  version   : require ( '../../package.json' ).version,
+  api       : {
+    station   : 'http://localhost:3000/station/',
+    team      : 'http://localhost:3000/team/',
+    tagtypes  : 'http://localhost:3000/tagtypes/',
+    tag       : 'http://localhost:3000/tag/',
+    workmode  : 'http://localhost:3000/workmode/',
+    shifttype : 'http://localhost:3000/shifttype/',
+    discipline: 'http://localhost:3000/discipline/',
+    worker    : 'http://localhost:3000/worker/',
+    shift     : 'http://localhost:3000/shift/'
+  }
 };
 
 /*
