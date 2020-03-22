@@ -69,26 +69,26 @@ export class DetailDrawerComponent implements OnInit {
 
 
   getRandomShift(){
-    let t = Math.round(Math.random() * 3);
+    const t = Math.round(Math.random() * 3);
 
-    const shift = ''
+    let shift = '';
     switch (t ) {
       case 0:
-        t = '<b>Früh</b> - ';
+        shift = '<b>Früh</b> - ';
         break;
 
       case 1:
-        t = '<b>Spät</b> - ';
+        shift = '<b>Spät</b> - ';
         break;
 
       case 2:
-        t = '<b>Nacht</b> - ';
+        shift = '<b>Nacht</b> - ';
         break;
     }
 
-    const d = new Date(Math.floor(Math.round(Math.random() * new Date().getTime())))
-    t = t + new DatePipe('de').transform(d, 'dd.MM.yyyy');
-    return t;
+    const d = new Date(Math.floor(Math.round(Math.random() * new Date().getTime())));
+    shift = shift + new DatePipe('de').transform(d, 'dd.MM.yyyy');
+    return shift;
   }
 
 
