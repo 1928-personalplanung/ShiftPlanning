@@ -50,8 +50,8 @@ namespace ShiftPlan
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ShiftPpan API",
-                    Description = "ShiftPpan API",
+                    Title = "ShiftPlanning API",
+                    Description = "ShiftPlan preliminary API",
                 });
 
                 // Set the comments path for the Swagger JSON and UI.
