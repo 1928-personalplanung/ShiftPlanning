@@ -19,7 +19,7 @@ export class WorkerService {
         .subscribe (
           workModes => {
             const workModeMap = new Map<number, WorkMode>();
-            workModes.forEach( (value, index) => workModeMap.set( index, value ));
+            workModes.forEach( (value, index) => workModeMap.set( value.id, value ));
             this.workModeMap$.next( workModeMap);
           }
         );
@@ -48,7 +48,7 @@ export class WorkerService {
                      ).subscribe(
                        ([workModeMap, tags]) => {
                              workerResponse.tags = tags;
-                             workerResponse.workMode = workModeMap.get( workerResponse.id );
+                             workerResponse.workMode = workModeMap.get( workerResponse.workModeId );
                              subscriber.next ( workerResponse );
                              subscriber.complete ();
                        },

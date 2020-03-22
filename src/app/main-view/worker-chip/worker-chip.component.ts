@@ -29,18 +29,18 @@ export class WorkerChipComponent implements OnInit {
 
   @HostBinding( 'class.booking-available' )
   get isBookingAvailable() {
-    return this.worker.hoursWorkedInCurrentMonth < this.worker.targetHoursInCurrentMonth * 0.8;
+    return this.worker.hoursWorkedInCurrentMonth < this.worker.workMode.hoursPerMonth * 0.8;
   }
 
   @HostBinding( 'class.booking-limited' )
   get isBookingLimited() {
-    return this.worker.hoursWorkedInCurrentMonth >= this.worker.targetHoursInCurrentMonth * 0.8 &&
-        this.worker.hoursWorkedInCurrentMonth <= this.worker.targetHoursInCurrentMonth;
+    return this.worker.hoursWorkedInCurrentMonth >= this.worker.workMode.hoursPerMonth * 0.8 &&
+        this.worker.hoursWorkedInCurrentMonth <= this.worker.workMode.hoursPerMonth;
   }
 
   @HostBinding( 'class.booking-overbooked' )
   get isBookingOverbooked() {
-    return this.worker.hoursWorkedInCurrentMonth > this.worker.targetHoursInCurrentMonth;
+    return this.worker.hoursWorkedInCurrentMonth > this.worker.workMode.hoursPerMonth;
   }
 
   get isSick() {

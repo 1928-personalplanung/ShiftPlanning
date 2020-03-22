@@ -4,6 +4,9 @@ import { CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArra
 import { Worker } from '../dto/worker/worker';
 import { TagTypes } from '../dto/tag/tag-types.enum';
 import { PlannerService, ShiftGroupListItem } from './planner.service';
+import { WorkerService } from '../dto/worker/worker.service';
+import { StationService } from '../dto/station/station.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'sp-main-view',
@@ -19,7 +22,8 @@ export class MainViewComponent implements OnInit {
     {id: 4, label: 'Station 4'},
   ];
 
-  readonly workers: Worker[] = [
+  workers: Worker[] = [];
+    /*[
     { id: 1, name: 'Mitarbeiter 1', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 2, name: 'Mitarbeiter 2', hoursWorkedInCurrentMonth: 42, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 3, name: 'Mitarbeiter 3', hoursWorkedInCurrentMonth: 36, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
@@ -62,7 +66,7 @@ export class MainViewComponent implements OnInit {
       } ],
       score: 0.5
     },
-  ];
+  ];*/
 
   readonly days = [
     'Montag 08.',
@@ -158,10 +162,13 @@ export class MainViewComponent implements OnInit {
   stationControl = new FormControl(this.stations[0]);
   shiftGroups: ShiftGroupListItem[];
 
-  constructor( private $planner: PlannerService) {
+  constructor( private $planner: PlannerService,
+               private $worker: WorkerService,
+               private $station: StationService) {
   }
 
   ngOnInit(): void {
+    this.$worker.getList().pipe( first() ).subscribe( workersList => this.workers = workersList );
     // todo remove mock
     // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
     this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
