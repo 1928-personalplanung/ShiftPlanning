@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {MainViewModule} from './main-view/main-view.module';
 import {DetailsModule} from './details/details.module';
 import {ModalsModule} from './modals/modals.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ModalsModule} from './modals/modals.module';
     MatSidenavModule,
     DetailsModule,
     ModalsModule,
-    MainViewModule
+    MainViewModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
