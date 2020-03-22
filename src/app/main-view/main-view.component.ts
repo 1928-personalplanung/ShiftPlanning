@@ -2,66 +2,76 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Worker } from '../dto/worker/worker';
-import { TagTypes } from '../dto/tag/tag-types.enum';
 import { PlannerService, ShiftGroupListItem } from './planner.service';
+import { AppDrawerCtrlService } from '../app-drawer-ctrl.service';
 
-@Component({
-  selector: 'sp-main-view',
+@Component ( {
+  selector   : 'sp-main-view',
   templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.scss']
-})
+  styleUrls  : ['./main-view.component.scss']
+} )
 export class MainViewComponent implements OnInit {
 
   readonly stations = [
-    {id: 1, label: 'Station 1'},
-    {id: 2, label: 'Station 2'},
-    {id: 3, label: 'Station 3'},
-    {id: 4, label: 'Station 4'},
+    { id: 1, label: 'Station 1' },
+    { id: 2, label: 'Station 2' },
+    { id: 3, label: 'Station 3' },
+    { id: 4, label: 'Station 4' }
   ];
 
   readonly workers: Worker[] = [
     { id: 1, name: 'Mitarbeiter 1', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 2, name: 'Mitarbeiter 2', hoursWorkedInCurrentMonth: 42, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 3, name: 'Mitarbeiter 3', hoursWorkedInCurrentMonth: 36, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
-    { id: 4, name: 'Mitarbeiter 4', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [{
+    {
+      id      : 4, name: 'Mitarbeiter 4', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
-        workerId: 456,
+        workerId : 456,
         tagTypeId: 1,
         startDate: 1584873478753,
-        endDate  : 1584873478754,
-      }], score: 0.5 },
+        endDate  : 1584873478754
+      }
+      ], score: 0.5
+    },
     { id: 5, name: 'Mitarbeiter 5', hoursWorkedInCurrentMonth: 45, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 6, name: 'Mitarbeiter 6', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 20, tags: [], score: 0.5 },
-    { id: 7, name: 'Mitarbeiter 7', hoursWorkedInCurrentMonth: 20, targetHoursInCurrentMonth: 40, tags: [{
+    {
+      id      : 7, name: 'Mitarbeiter 7', hoursWorkedInCurrentMonth: 20, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
-        workerId: 456,
+        workerId : 456,
         tagTypeId: 2,
         startDate: 1584873478753,
-        endDate  : 1584873478754,
-      }], score: 0.5 },
+        endDate  : 1584873478754
+      }
+      ], score: 0.5
+    },
     { id: 8, name: 'Mitarbeiter 8', hoursWorkedInCurrentMonth: 39, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 9, name: 'Mitarbeiter 9', hoursWorkedInCurrentMonth: 15, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 10, name: 'Mitarbeiter 10', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 11, name: 'Mitarbeiter 11', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
     { id: 12, name: 'Mitarbeiter 12', hoursWorkedInCurrentMonth: 32, targetHoursInCurrentMonth: 25, tags: [], score: 0.5 },
     { id: 13, name: 'Mitarbeiter 13', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [], score: 0.5 },
-    { id: 14, name: 'Mitarbeiter 14', hoursWorkedInCurrentMonth: 35, targetHoursInCurrentMonth: 40, tags: [{
+    {
+      id      : 14, name: 'Mitarbeiter 14', hoursWorkedInCurrentMonth: 35, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
-        workerId: 456,
+        workerId : 456,
         tagTypeId: 11,
         startDate: 1584873478753,
-        endDate  : 1584873478754,
-      }], score: 0.5 },
+        endDate  : 1584873478754
+      }
+      ], score: 0.5
+    },
     {
-      id: 15, name: 'Mitarbeiter 15', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [ {
+      id   : 15, name: 'Mitarbeiter 15', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
-        workerId: 456,
+        workerId : 456,
         tagTypeId: 22,
         startDate: 1584873478753,
         endDate  : 1584873478754
-      } ],
+      }
+      ],
       score: 0.5
-    },
+    }
   ];
 
   readonly days = [
@@ -155,23 +165,25 @@ export class MainViewComponent implements OnInit {
   //   }
   // ];
 
-  stationControl = new FormControl(this.stations[0]);
+  stationControl = new FormControl ( this.stations[ 0 ] );
   shiftGroups: ShiftGroupListItem[];
 
-  constructor( private $planner: PlannerService) {
+  constructor( private $planner: PlannerService,
+               private $drawer: AppDrawerCtrlService
+  ) {
   }
 
   ngOnInit(): void {
     // todo remove mock
     // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
     this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
-             .subscribe( n => {
-               this.shiftGroups = n;
-               // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
-             } );
+        .subscribe ( n => {
+          this.shiftGroups = n;
+          // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+        } );
   }
 
-  stationDisplayFn(station): string {
+  stationDisplayFn( station ): string {
     return station && station.label ? station.label : '';
   }
 
@@ -183,25 +195,24 @@ export class MainViewComponent implements OnInit {
     // todo change shifts
   }
 
-  dragWorkerStart(event: CdkDragStart) {
-    console.log('dragStart', event, event.source.data);
+  dragWorkerStart( event: CdkDragStart ) {
+    console.log ( 'dragStart', event, event.source.data );
 
-    const shiftGroupRI = Math.floor(Math.random() * this.shiftGroups.length);
-    const shiftRI = Math.floor(Math.random() * this.shiftGroups[shiftGroupRI].shifts.length);
-    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabled = true;
-    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabledMsg = 'Zu viel arbeit für einen Mitarbeiter';
+    const shiftGroupRI                                             = Math.floor ( Math.random () * this.shiftGroups.length );
+    const shiftRI                                                  = Math.floor ( Math.random () * this.shiftGroups[ shiftGroupRI ].shifts.length );
+    this.shiftGroups[ shiftGroupRI ].shifts[ shiftRI ].disabled    = true;
+    this.shiftGroups[ shiftGroupRI ].shifts[ shiftRI ].disabledMsg = 'Zu viel arbeit für einen Mitarbeiter';
   }
 
-
-  dragWorkerDropped(event: CdkDragDrop<any>) {
-    console.log('cdkDragDropped', event);
+  dragWorkerDropped( event: CdkDragDrop<any> ) {
+    console.log ( 'cdkDragDropped', event );
 
     // todo reset disabled
 
     // aus der workers list in zelle - check disabled -> copy
-    if (event.previousContainer.id === 'workers-drop-list' && event.container.id !== 'workers-drop-list') {
-      if (!event.container.data.disabled) {
-        copyArrayItem(
+    if ( event.previousContainer.id === 'workers-drop-list' && event.container.id !== 'workers-drop-list' ) {
+      if ( !event.container.data.disabled ) {
+        copyArrayItem (
           event.previousContainer.data,
           event.container.data.workers,
           event.previousIndex,
@@ -209,15 +220,15 @@ export class MainViewComponent implements OnInit {
         );
       }
 
-    // von zelle zu zelle
-    // gleiche zelle -> move
-    // unterschiedliche zellen - check disabled -> transfer
-    } else if (event.previousContainer.id !== 'workers-drop-list' && event.container.id !== 'workers-drop-list') {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(event.container.data.workers, event.previousIndex, event.currentIndex);
+      // von zelle zu zelle
+      // gleiche zelle -> move
+      // unterschiedliche zellen - check disabled -> transfer
+    } else if ( event.previousContainer.id !== 'workers-drop-list' && event.container.id !== 'workers-drop-list' ) {
+      if ( event.previousContainer === event.container ) {
+        moveItemInArray ( event.container.data.workers, event.previousIndex, event.currentIndex );
 
-      } else if (!event.container.data.disabled) {
-        transferArrayItem(
+      } else if ( !event.container.data.disabled ) {
+        transferArrayItem (
           event.previousContainer.data.workers,
           event.container.data.workers,
           event.previousIndex,
@@ -225,13 +236,17 @@ export class MainViewComponent implements OnInit {
         );
       }
 
-    // von zelle zu workers list -> remove von zelle
-    } else if (event.previousContainer.id !== 'workers-drop-list' && event.container.id === 'workers-drop-list') {
-      event.previousContainer.data.workers.splice(event.previousIndex, 1);
+      // von zelle zu workers list -> remove von zelle
+    } else if ( event.previousContainer.id !== 'workers-drop-list' && event.container.id === 'workers-drop-list' ) {
+      event.previousContainer.data.workers.splice ( event.previousIndex, 1 );
 
-    // von workers list zu workers list -> ignore
+      // von workers list zu workers list -> ignore
     } else {
 
     }
+  }
+
+  openDetails( id: number ) {
+    this.$drawer.open ( 'drawerC', id );
   }
 }
