@@ -416,5 +416,26 @@
       "name": "teilzeit halbe stelle",
       "hoursPerMonth": 82
     }
-  ]
+  ],
+  "shifttype": [
+    {
+      "id": 1,
+      "name": "früh",
+      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 6, m:55}, duration: {h: 8, m:55} }",
+      "template": "nur für backend rel"
+    },
+    {
+      "id": 2,
+      "name": "spät",
+      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 13, m:0}, duration: {h: 8, m:55} }",
+      "template": "nur für backend rel"
+    },
+    {
+      "id": 3,
+      "name": "nacht",
+      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 20, m:12}, duration: {h: 8, m:55} }",
+      "template": "nur für backend rel"
+    }
+  ],
+  
 }
