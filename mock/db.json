@@ -420,22 +420,30 @@
   "shifttype": [
     {
       "id": 1,
-      "name": "früh",
-      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 6, m:55}, duration: {h: 8, m:55} }",
-      "template": "nur für backend rel"
-    },
-    {
-      "id": 2,
-      "name": "spät",
-      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 13, m:0}, duration: {h: 8, m:55} }",
-      "template": "nur für backend rel"
-    },
-    {
-      "id": 3,
-      "name": "nacht",
-      "constrains": "{ wichtig: \"MUSS GEPRÜFT WERDEN\", start: {h: 20, m:12}, duration: {h: 8, m:55} }",
-      "template": "nur für backend rel"
+      "name": "drei schicht",
+      "constrains": [
+        {
+          "type": "required", "value": 8, "templateId": 0
+        },
+        {
+          "type": "required", "value": 5, "templateId": 1
+        },
+        {
+          "type": "required", "value": 2, "templateId": 2
+        }
+      ],
+      "template": [
+        {"start": {"h": 6, "m":55}, "duration": {"h": 8, "m":55} },
+        {"start": {"h": 14, "m":55}, "duration": {"h": 8, "m":55} },
+        {"start": {"h": 22, "m":55}, "duration": {"h": 8, "m":55} }
+      ]
     }
   ],
-  
+  "discipline": [
+    {
+      "id": 1,
+      "name": "Pfleger",
+      "shiftTypeId": 1
+    }
+  ]
 }
