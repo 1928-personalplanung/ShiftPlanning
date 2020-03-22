@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, filter, switchMap, first} from 'rxjs/operators';
-import {of} from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import {CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 import {WorkerService} from '../dto/worker/worker.service';
@@ -9,6 +9,7 @@ import {StationService} from '../dto/station/station.service';
 import {AppDrawerCtrlService} from '../app-drawer-ctrl.service';
 import {Worker} from '../dto/worker/worker';
 import {PlannerService, ShiftGroupListItem} from './planner.service';
+import { Station } from '../dto/station/station';
 
 @Component({
   selector: 'sp-main-view',
@@ -17,12 +18,7 @@ import {PlannerService, ShiftGroupListItem} from './planner.service';
 })
 export class MainViewComponent implements OnInit {
 
-  readonly stations = [
-    {id: 1, label: 'Station 1'},
-    {id: 2, label: 'Station 2'},
-    {id: 3, label: 'Station 3'},
-    {id: 4, label: 'Station 4'},
-  ];
+  stations: Station[];
 
   workers: Worker[] = [];
   filteredWorkers: Worker[] = [];
@@ -47,8 +43,8 @@ export class MainViewComponent implements OnInit {
 
   shiftGroups: ShiftGroupListItem[];
 
-  stationControl = new FormControl(this.stations[0]);
-  workerControl = new FormControl(null);
+  stationControl: FormControl = new FormControl(null);
+  workerControl: FormControl = new FormControl(null);
 
   constructor(private $planner: PlannerService,
               private $worker: WorkerService,
@@ -57,15 +53,21 @@ export class MainViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.$worker.getList().pipe(first())
-      .subscribe(workersList => {
+
+    forkJoin([
+      this.$worker.getList().pipe( first() ),
+      this.$station.getList().pipe( first() ),
+      this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 ).pipe(first())
+    ]).subscribe(
+      ([workersList, stations, shiftGroups]) => {
         this.workers = workersList;
         this.filteredWorkers = workersList;
-      });
-    this.$planner.getShiftFromRangeGrouped('2020-03-16T00:00:00', 14)
-      .subscribe(n => {
-        this.shiftGroups = n;
-      });
+        this.stations = stations;
+        this.stationControl = new FormControl(this.stations[0]);
+        this.shiftGroups = shiftGroups;
+        this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+      }
+    );
 
     this.workerControl.valueChanges.pipe(
       debounceTime(250),
@@ -81,7 +83,7 @@ export class MainViewComponent implements OnInit {
   }
 
   stationDisplayFn(station): string {
-    return station && station.label ? station.label : '';
+    return station && station.name ? station.name : '';
   }
 
   prevWeeks() {
