@@ -90,9 +90,7 @@ export class MainViewComponent implements OnInit {
         {id: 3, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
         {
           id: 4,
-          workers: [
-            {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
-          ],
+          workers: [],
           disabled: false,
           disabledMsg: null,
           notSatisfied: false,
