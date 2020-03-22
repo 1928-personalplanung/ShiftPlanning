@@ -1,0 +1,45 @@
+<div class="maindetails">
+
+  <i class="material-icons closer click" (click)="this.close()">close</i>
+  <div class="content">
+
+    <div>
+      <h1>{{this.data.name}}</h1>
+    </div>
+    <div class="rating">
+      <h3>Gefährdung</h3>
+      <div>
+        <ng-container *ngFor="let x of this.rate">
+          <i class="material-icons">dangerous</i>
+        </ng-container>
+      </div>
+
+    </div>
+    <div class="hours">
+      <span>{{this.data.currentHours + ' / ' + this.data.maxHours + ' Stunden geplant'}}</span>
+      <mat-progress-bar
+        [value]="(this.data.currentHours / this.data.maxHours) * 100"
+
+      ></mat-progress-bar>
+    </div>
+
+    <div>
+      <h3>Letzte 3 Schichten</h3>
+      <ul>
+        <li *ngFor="let s of this.data.shifts">
+          {{s}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="adding">
+      <h3>Abwesenheit</h3>
+      <ul>
+        <li class="holiday">Urlaub - 10.10.2010</li>
+        <li class="sickness">Krank - 10.10.2010</li>
+        <li class="holiday">Urlaub - 10.10.2010</li>
+      </ul>
+      <button mat-fab (click)="modal.open('offtime')"><i class="material-icons">add</i></button>
+    </div>
+  </div>
+</div>
