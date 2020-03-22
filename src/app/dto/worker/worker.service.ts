@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Worker } from './worker';
 import { environment } from '../../../environments/environment';
+import { switchMap } from 'rxjs/operators';
+import { worker } from 'cluster';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,12 @@ export class WorkerService {
   }
 
   getByID( id: number ): Observable<Worker> {
-    return this.http.get<Worker> ( environment.api.worker + id );
+    return this.http.get<Worker> ( environment.api.worker + id )
+      .pipe(
+        // switchMap( worker => {
+        //   return new Observable<Worker>( subscriber => {
+        //   });
+        // })
+      );
   }
 }
