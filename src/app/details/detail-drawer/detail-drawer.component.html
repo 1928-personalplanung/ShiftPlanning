@@ -8,10 +8,9 @@
     </div>
     <div class="rating">
       <h3>Gefährdung</h3>
-      <div>
-        <ng-container *ngFor="let x of this.rate">
-          <i class="material-icons">dangerous</i>
-        </ng-container>
+      <div class="bars">
+        <div class="blankbar"></div>
+        <div class="scorebar" [style.clipPath]="this.ratingStyle"></div>
       </div>
 
     </div>

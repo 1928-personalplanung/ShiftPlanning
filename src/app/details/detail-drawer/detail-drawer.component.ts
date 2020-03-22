@@ -6,6 +6,7 @@ import { AppModalCtrlService } from '../../app-modal-ctrl.service';
 import { WorkerService } from '../../dto/worker/worker.service';
 import { Worker } from '../../dto/worker/worker';
 import { share, tap } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
@@ -38,14 +39,20 @@ export class DetailDrawerComponent implements OnInit {
 
   worker: Observable<Worker>;
 
+
+  ratingStyle;
+
   constructor( public drawer: AppDrawerCtrlService,
                private workers: WorkerService,
                private actR: ActivatedRoute,
+               private san: DomSanitizer,
                public modal: AppModalCtrlService ) {
 
     this.worker = this.workers.getByID ( parseInt ( this.actR.snapshot.paramMap.get ( 'id' ), 10 ) )
                       .pipe (
                         tap ( value => {
+                          const p = value.score;//Math.round(value.hoursWorkedInCurrentMonth / value.workMode.hoursPerMonth * 100);
+                          this.ratingStyle = this.san.bypassSecurityTrustStyle('polygon(0 0, ' + p + '% 0%, ' + p + '% 100%, 0% 100%)');
                           console.log ( value );
                         } ),
                       share ()

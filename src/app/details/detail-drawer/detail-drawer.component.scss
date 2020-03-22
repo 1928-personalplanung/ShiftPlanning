@@ -74,12 +74,26 @@
           }
         }
 
+
         &.rating {
 
-          > div {
-            display: flex;
-            justify-content: space-around;
-            color: #ff0000;
+          > div.bars {
+            position: relative;
+            height: 1.5rem;
+            
+            >div{
+              width: 100%;
+              height: 1rem;
+              position: absolute;
+            }
+            .blankbar{
+              background-color: #d0d0d0;
+            }
+            .scorebar{
+              background: rgb(32,244,35);
+              background: linear-gradient(90deg, rgba(32,244,35,1) 0%, rgba(224,255,0,1) 66%, rgba(255,0,0,1) 100%);
+
+            }
           }
         }
 
