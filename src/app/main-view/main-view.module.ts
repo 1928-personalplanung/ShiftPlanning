@@ -1,12 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { MainViewComponent } from './main-view.component';
 import {SharedModule} from '../shared/shared.module';
+import {MainViewComponent} from './main-view.component';
+import {WorkerTooltip} from './worker-tooltip/worker-tooltip.directive';
+import {WorkerTooltipComponent} from './worker-tooltip/worker-tooltip.component';
 
 @NgModule({
   declarations: [
-    MainViewComponent
+    MainViewComponent,
+    // WorkerTooltip,
+    // WorkerTooltipComponent
   ],
   exports: [
     MainViewComponent
@@ -16,4 +20,5 @@ import {SharedModule} from '../shared/shared.module';
     SharedModule
   ]
 })
-export class MainViewModule { }
+export class MainViewModule {
+}

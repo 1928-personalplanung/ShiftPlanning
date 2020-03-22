@@ -8,13 +8,13 @@
   </mat-autocomplete>
 
   <div class="main-view-date-select">
-    <button mat-icon-button aria-label="Example icon-button with a heart icon">
+    <button mat-icon-button (click)="prevWeeks()">
       <mat-icon>chevron_left</mat-icon>
     </button>
 
     <h2>09.02.20 - 22.02.20</h2>
 
-    <button mat-icon-button aria-label="Example icon-button with a heart icon">
+    <button mat-icon-button (click)="nextWeeks()">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
@@ -27,8 +27,10 @@
       <input matInput placeholder="Angestellte">
     </mat-form-field>
 
-    <mat-chip-list cdkDropList [cdkDropListData]="workers">
-      <mat-chip *ngFor="let worker of workers" cdkDrag (click)="showDeatails(worker.id)">{{worker.label}}</mat-chip>
+    <mat-chip-list cdkDropList [cdkDropListData]="workers" id="workers-drop-list" [cdkDropListEnterPredicate]="enterFnct">
+      <mat-chip *ngFor="let worker of workers"
+                cdkDrag [cdkDragData]="worker"
+                (click)="showDeatails(worker.id)">{{worker.label}}</mat-chip>
     </mat-chip-list>
   </div>
 

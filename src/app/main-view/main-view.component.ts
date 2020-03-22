@@ -127,14 +127,27 @@ export class MainViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  prevWeeks() {
+    // todo change shifts
+  }
+
+  nextWeeks() {
+    // todo change shifts
+  }
+
   showDeatails(workerId: number) {
     // todo open detail drawer
   }
 
+  enterFnct = (drag, drop) => {
+    console.log('enterPredicate', drag, drop);
+    return true;
+  };
+
   dropOnShift(shift, event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else if (event.previousContainer.id === 'cdk-drop-list-0') {
+    } else if (event.previousContainer.id === 'workers-drop-list') {
       copyArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
