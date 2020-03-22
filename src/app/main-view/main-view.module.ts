@@ -1,18 +1,18 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {SharedModule} from '../shared/shared.module';
-import {MainViewComponent} from './main-view.component';
+import { SharedModule } from '../shared/shared.module';
+import { MainViewComponent } from './main-view.component';
 import { WorkerChipComponent } from './worker-chip/worker-chip.component';
-// import {WorkerTooltip} from './worker-tooltip/worker-tooltip.directive';
-// import {WorkerTooltipComponent} from './worker-tooltip/worker-tooltip.component';
+import { WorkerInfoTooltipDirective } from './worker-info-tooltip/worker-info-tooltip.directive';
+import { WorkerInfoTooltipComponent } from './worker-info-tooltip/worker-info-tooltip.component';
 
 @NgModule({
   declarations: [
     MainViewComponent,
     WorkerChipComponent,
-    // WorkerTooltip,
-    // WorkerTooltipComponent
+    WorkerInfoTooltipDirective,
+    WorkerInfoTooltipComponent
   ],
   exports: [
     MainViewComponent
