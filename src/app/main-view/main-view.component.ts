@@ -73,7 +73,7 @@ export class MainViewComponent implements OnInit {
       distinctUntilChanged(),
       switchMap(value => {
         return value === '' ? of(this.workers) :
-          of(this.workers.filter(worker => worker.name.indexOf(value) > -1));
+          of(this.workers.filter(sWorker => sWorker.name.indexOf(value) > -1));
       })
     ).subscribe(result => {
       this.filteredWorkers = result;
