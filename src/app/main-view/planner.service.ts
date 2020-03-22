@@ -68,14 +68,14 @@ export class PlannerService {
     } else {
       targetGroup = shiftGroups[ 2 ];
     }
-    targetGroup.shifts[6] = { ...targetGroup.shifts[6], ...shift, ...base };
+    targetGroup.shifts[6] = { ...targetGroup.shifts[6], ...shift, ...base, notSatisfied: true, notSatisfiedMsg: 'bitte mehr' };
   }
 
   private generateEmptyGroupList( durationDay: number ): ShiftGroupListItem[] {
     return [
-      { label: 'Frueh', icon: 'brightness_5', shifts: this.getDummyShitItemList ( durationDay, 8, 3 ) },
-      { label: 'Spaet', icon: 'wb_sunny', shifts: this.getDummyShitItemList ( durationDay, 4, 7 ) },
-      { label: 'Nacht', icon: 'brightness_3', shifts: this.getDummyShitItemList ( durationDay, 9, 12 ) }
+      { label: 'Frueh', icon: 'brightness_5', shifts: this.getDummyShitItemList ( durationDay, 8, 699 ) },
+      { label: 'Spaet', icon: 'wb_sunny', shifts: this.getDummyShitItemList ( durationDay, 4, 6 ) },
+      { label: 'Nacht', icon: 'brightness_3', shifts: this.getDummyShitItemList ( durationDay, 9, 132 ) }
     ];
   }
 

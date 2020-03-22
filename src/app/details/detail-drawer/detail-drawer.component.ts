@@ -11,9 +11,9 @@ import { TagTypes } from '../../dto/tag/tag-types.enum';
 import { DatePipe } from '@angular/common';
 
 @Component ( {
-  selector   : 'sp-detail-drawer',
-  templateUrl: './detail-drawer.component.html',
-  styleUrls  : ['./detail-drawer.component.scss'],
+  selector       : 'sp-detail-drawer',
+  templateUrl    : './detail-drawer.component.html',
+  styleUrls      : ['./detail-drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class DetailDrawerComponent implements OnInit {
@@ -42,7 +42,6 @@ export class DetailDrawerComponent implements OnInit {
 
   worker: Observable<Worker>;
 
-
   ratingStyle;
   TagTypes = TagTypes;
 
@@ -55,24 +54,23 @@ export class DetailDrawerComponent implements OnInit {
     this.worker = this.workers.getByID ( parseInt ( this.actR.snapshot.paramMap.get ( 'id' ), 10 ) )
                       .pipe (
                         tap ( value => {
-                          const p = value.score;//Math.round(value.hoursWorkedInCurrentMonth / value.workMode.hoursPerMonth * 100);
-                          this.ratingStyle = this.san.bypassSecurityTrustStyle('polygon(0 0, ' + p + '% 0%, ' + p + '% 100%, 0% 100%)');
+                          const p          = value.score;//Math.round(value.hoursWorkedInCurrentMonth / value.workMode.hoursPerMonth * 100);
+                          this.ratingStyle = this.san.bypassSecurityTrustStyle ( 'polygon(0 0, ' + p + '% 0%, ' + p + '% 100%, 0% 100%)' );
                           console.log ( value );
                         } ),
-                      share ()
-                    );
+                        share ()
+                      );
   }
 
   close() {
     this.drawer.closeDrawer ();
   }
 
-
-  getRandomShift(){
-    const t = Math.floor(Math.random() * 3);
+  getRandomShift() {
+    const t = Math.floor ( Math.random () * 3 );
 
     let shift = '';
-    switch (t ) {
+    switch ( t ) {
       case 0:
         shift = '<b>Früh</b> - ';
         break;
@@ -86,16 +84,16 @@ export class DetailDrawerComponent implements OnInit {
         break;
     }
 
-    const d = new Date(Math.floor(Math.round(Math.random() * new Date().getTime())));
-    shift = shift + new DatePipe('de').transform(d, 'dd.MM.yyyy');
+    const d = new Date ( Math.floor ( Math.round ( Math.random () * new Date ().getTime () ) ) );
+    shift   = shift + new DatePipe ( 'de' ).transform ( d, 'dd.MM.yyyy' );
     return shift;
   }
 
-
-  getDate(timestamp){
-    console.log(new Date(timestamp * 1000))
-    return new Date(timestamp * 1000)
+  getDate( timestamp ) {
+    console.log ( new Date ( timestamp * 1000 ) );
+    return new Date ( timestamp * 1000 );
   }
+
   ngOnInit(): void {
 
   }
