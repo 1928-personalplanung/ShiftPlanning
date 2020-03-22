@@ -13,11 +13,7 @@ export class AppComponent {
   title = 'shift-planning';
 
   constructor( public $drawer: AppDrawerCtrlService,
-               public $modal: AppModalCtrlService,
-               public $shif: ShiftService,
-               public $station: StationService,
+               public $modal: AppModalCtrlService
                ) {
-    // this.$shif.getListFromRange().subscribe( n => console.log ( n ) );
-    this.$station.getList().subscribe( n => console.log ( n ) );
   }
 }

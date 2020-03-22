@@ -8,4 +8,5 @@ export interface Shift {
   startDate: number;
   endDate: number;
   worker?: Worker[];
+  forLocalMockWorkerIDs?: number[];
 }

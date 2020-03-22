@@ -15,4 +15,8 @@ export class WorkerService {
   getList(): Observable<Worker[]> {
     return this.http.get<Worker[]> ( environment.api.worker );
   }
+
+  getByID( id: number ): Observable<Worker> {
+    return this.http.get<Worker> ( environment.api.worker + id );
+  }
 }
