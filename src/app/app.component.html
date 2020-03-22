@@ -1,14 +1,3 @@
-<h1>run</h1>
-
-<a [routerLink]="[ { outlets: { modal: ['modalB'] } } ]">
-  open ModalBComp
-</a>
-<a [routerLink]="[ { outlets: { drawer: ['drawerC'] } } ]">
-  open ModalBComp
-</a>
-
-
-
 <router-outlet></router-outlet>
 
 <div *ngIf="$modal.showModal$ | async" class="modal-container">
