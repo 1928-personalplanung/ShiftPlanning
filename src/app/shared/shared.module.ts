@@ -14,13 +14,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule ( {
   declarations: [],
   imports     : [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
     MatInputModule,
     MatDatepickerModule,
     MatInputModule,
@@ -31,13 +31,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatChipsModule,
     MatTooltipModule,
     MatProgressBarModule,
-    MatCardModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
     DragDropModule
   ],
   exports     : [
     ReactiveFormsModule,
+    MatCommonModule,
     MatInputModule,
     MatFormFieldModule,
     MatAutocompleteModule,
@@ -52,7 +50,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressBarModule,
     MatCardModule,
     MatCheckboxModule,
-
+    OverlayModule,
     DragDropModule
   ]
 } )

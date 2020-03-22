@@ -1,0 +1,107 @@
+@import '../../scss/component';
+
+$grid-label-width: 50px;
+$grid-border: #dadce0 1px solid;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.main-view-headline {
+  display: flex;
+  flex: 0 0 80px;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.main-view-date-select {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+    padding: 0 10px;
+
+    line-height: 2;
+  }
+}
+
+.main-view-workerlist {
+  flex: 0 0 150px;
+  padding: 10px;
+}
+
+.main-view-worker-chip-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -4px;
+}
+
+.main-view-grid {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 0 10px 5px;
+}
+
+.grid-row--headline,
+.grid-row {
+  display: flex;
+  flex: 1 1 150px;
+  flex-direction: row;
+
+  div:not(.grid-label) {
+    flex: 0 0 auto;
+    width: calc((100% - #{$grid-label-width}) / 14);
+  }
+}
+
+.grid-row--headline {
+  flex: 0 0 40px;
+  align-items: center;
+
+  div {
+    color: #3c4043;
+    text-align: center;
+  }
+}
+
+.grid-row {
+  &:last-child div:not(.grid-label) {
+    border-bottom: $grid-border;
+  }
+
+  div:not(.grid-label) {
+    height: 100%;
+
+    border-top: $grid-border;
+    border-right: $grid-border;
+  }
+
+  div:nth-child(2) {
+    border-left: $grid-border;
+  }
+
+  div.not-satisfied {
+    background-image: linear-gradient(135deg, transparent 25%, #bd4053 25%, #bd4053 50%, transparent 50%, transparent 75%, #bd4053 75%, #bd4053 100%);
+    background-size: 70.71px 70.71px;
+  }
+}
+
+.grid-label {
+  flex: 0 0 $grid-label-width;
+  align-self: center;
+
+  color: #3c4043;
+  text-align: center;
+}
+
+.grid-drop-disabled {
+  background-color: gray;
+}

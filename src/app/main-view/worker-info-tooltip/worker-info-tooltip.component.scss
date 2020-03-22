@@ -1,0 +1,71 @@
+
+:host(sp-worker-info-tooltip) {
+  $color: #909474;
+  $size: 20px;
+
+  pointer-events: none;
+  position: fixed;
+  z-index: 10000;
+  margin-top: 2rem;
+
+
+  transition: opacity .5s;
+  opacity: 0;
+
+  .tooltip {
+    display: flex;
+    margin-left: -47%;
+    &.hasBar {
+      .content {
+        min-width: 200px;
+        mat-progress-bar{
+          margin: .5rem 0;
+        }
+      }
+    }
+
+    .content {
+      box-shadow: 6px 10px 18px -1px rgba(0, 0, 0, 0.28);
+
+      padding: 10px;
+      background: $color;
+      max-width: 300px;
+      width: max-content;
+      color: #ffffff;
+      border-radius: 4px;
+      text-align: center;
+
+    }
+
+    .arrow {
+      //      position: absolute;
+      width: 0;
+      height: 0;
+      top: 50%;
+      margin-top: -$size;
+    }
+
+
+    .arrowLeft {
+
+      border-top: $size solid transparent;
+      border-right: $size solid $color;
+      //margin-left: -$size;
+      //left: 0;
+    }
+
+    white-space: normal;
+  }
+
+  &.toolBottom {
+    .arrowLeft {
+      transform: rotate(90deg);
+    }
+
+    .tooltip {
+      flex-direction: column;
+      align-items: center;
+
+    }
+  }
+}

@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import { DetailsModule } from './details/details.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ModalsModule } from './modals/modals.module';
+import {MainViewModule} from './main-view/main-view.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ModalsModule } from './modals/modals.module';
     MatSidenavModule,
     DetailsModule,
     ModalsModule
+    MainViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
