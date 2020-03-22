@@ -1,9 +1,11 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { AppDrawerCtrlService } from '../../app-drawer-ctrl.service';
-import { Subscription, timer } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { AppModalCtrlService } from '../../app-modal-ctrl.service';
+import { WorkerService } from '../../dto/worker/worker.service';
+import { Worker } from '../../dto/worker/worker';
+import { share, tap } from 'rxjs/operators';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
@@ -29,20 +31,29 @@ export class DetailDrawerComponent implements OnInit {
       'Spät - 02.07.2019',
       'Nacht - 02.07.2019'
     ],
-    absence: [
-      {
-
-      }
+    absence     : [
+      {}
     ]
   };
 
-  constructor( public drawer: AppDrawerCtrlService, public modal: AppModalCtrlService ) {
+  worker: Observable<Worker>;
 
+  constructor( public drawer: AppDrawerCtrlService,
+               private workers: WorkerService,
+               private actR: ActivatedRoute,
+               public modal: AppModalCtrlService ) {
 
+    this.worker = this.workers.getByID ( parseInt ( this.actR.snapshot.paramMap.get ( 'id' ), 10 ) )
+                      .pipe (
+                        tap ( value => {
+                          console.log ( value );
+                        } ),
+                      share ()
+                    );
   }
 
   close() {
-    this.drawer.closeDrawer();
+    this.drawer.closeDrawer ();
   }
 
   ngOnInit(): void {

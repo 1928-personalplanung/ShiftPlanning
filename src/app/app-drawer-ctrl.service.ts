@@ -28,7 +28,7 @@ export class AppDrawerCtrlService {
     this.showDrawer$.next( false );
   }
 
-  open( path: string ) {
-    this.$router.navigate( [  { outlets: { drawer:  [path]  } } ] );
+  open( path: string, id: number ) {
+    this.$router.navigate( [  { outlets: { drawer:  [path, id]  } } ] );
   }
 }

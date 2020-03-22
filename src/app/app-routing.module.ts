@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'offtime',
     component: OfftimeModalComponent,
     outlet: 'modal' },
-  { path: 'drawerC',
+  { path: 'drawerC/:id',
     component: DetailDrawerComponent,
     outlet: 'drawer' }
 ];

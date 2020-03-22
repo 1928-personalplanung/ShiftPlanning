@@ -1,10 +1,10 @@
-<div class="maindetails">
+<div class="maindetails" [class.hasData]="(this.worker | async)">
 
   <i class="material-icons closer click" (click)="this.close()">close</i>
   <div class="content">
 
     <div>
-      <h1>{{this.data.name}}</h1>
+      <h1>{{(this.worker | async)?.name}}</h1>
     </div>
     <div class="rating">
       <h3>Gefährdung</h3>
@@ -16,9 +16,9 @@
 
     </div>
     <div class="hours">
-      <span>{{this.data.currentHours + ' / ' + this.data.maxHours + ' Stunden geplant'}}</span>
+      <span>{{(this.worker | async)?.hoursWorkedInCurrentMonth + ' / ' + (this.worker | async)?.targetHoursInCurrentMonth + ' Stunden geplant'}}</span>
       <mat-progress-bar
-        [value]="(this.data.currentHours / this.data.maxHours) * 100"
+        [value]="((this.worker | async)?.hoursWorkedInCurrentMonth / (this.worker | async)?.targetHoursInCurrentMonth) * 100"
 
       ></mat-progress-bar>
     </div>

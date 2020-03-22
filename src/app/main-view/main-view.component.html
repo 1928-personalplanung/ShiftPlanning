@@ -35,8 +35,9 @@
     <div class="main-view-worker-chip-list"
          cdkDropList [cdkDropListData]="workers" id="workers-drop-list">
       <sp-worker-chip *ngFor="let worker of workers"
+                      (dblclick)="this.openDetails(worker.id)"
                 cdkDrag [cdkDragData]="worker" (cdkDragStarted)="dragWorkerStart($event)" (cdkDragDropped)="dragWorkerDropped($event)"
-                    spWorkerInfoTooltip [numValue]="20" [maxValue]="40" toolLabel="Arbeitszeit"
+                    spWorkerInfoTooltip [numValue]="worker.hoursWorkedInCurrentMonth" [maxValue]="worker.targetHoursInCurrentMonth" toolLabel="Arbeitszeit"
                 [worker]="worker"></sp-worker-chip>
     </div>
   </div>
