@@ -63,81 +63,92 @@ export class MainViewComponent implements OnInit {
   ];
 
   readonly days = [
-    'Montag 08',
-    'Dienstag 09',
-    'Mittwoch 10',
-    'Donnerstag 11',
-    'Freitag 12',
-    'Samstag 13',
-    'Sonntag 14',
+    'Montag 08.',
+    'Dienstag 09.',
+    'Mittwoch 10.',
+    'Donnerstag 11.',
+    'Freitag 12.',
+    'Samstag 13.',
+    'Sonntag 14.',
 
-    'Montag 15',
-    'Dienstag 16',
-    'Mittwoch 17',
-    'Donnerstag 18',
-    'Freitag 19',
-    'Samstag 20',
-    'Sonntag 21'
+    'Montag 15.',
+    'Dienstag 16.',
+    'Mittwoch 17.',
+    'Donnerstag 18.',
+    'Freitag 19.',
+    'Samstag 20.',
+    'Sonntag 21.'
   ];
 
   readonly shiftGroups = [
     {
       label: 'Frueh',
+      icon: 'brightness_5',
       shifts: [
-        {id: 1, workers: [], disabled: false, disabledMsg: null},
-        {id: 2, workers: [], disabled: false, disabledMsg: null},
-        {id: 3, workers: [], disabled: false, disabledMsg: null},
-        {id: 4, workers: [], disabled: false, disabledMsg: null},
-        {id: 5, workers: [], disabled: false, disabledMsg: null},
-        {id: 6, workers: [], disabled: false, disabledMsg: null},
-        {id: 7, workers: [], disabled: false, disabledMsg: null},
-        {id: 8, workers: [], disabled: false, disabledMsg: null},
-        {id: 9, workers: [], disabled: false, disabledMsg: null},
-        {id: 10, workers: [], disabled: false, disabledMsg: null},
-        {id: 11, workers: [], disabled: false, disabledMsg: null},
-        {id: 12, workers: [], disabled: false, disabledMsg: null},
-        {id: 13, workers: [], disabled: false, disabledMsg: null},
-        {id: 14, workers: [], disabled: false, disabledMsg: null}
+        {id: 1, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 2, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 3, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {
+          id: 4,
+          workers: [],
+          disabled: false,
+          disabledMsg: null,
+          notSatisfied: false,
+          notSatisfiedMsg: null
+        },
+        {id: 5, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 6, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 7, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+
+        {id: 8, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 9, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 10, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 11, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 12, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 13, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 14, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
       ]
     },
     {
       label: 'Spaet',
+      icon: 'wb_sunny',
       shifts: [
-        {id: 15, workers: [], disabled: false, disabledMsg: null},
-        {id: 16, workers: [], disabled: false, disabledMsg: null},
-        {id: 17, workers: [], disabled: false, disabledMsg: null},
-        {id: 18, workers: [], disabled: false, disabledMsg: null},
-        {id: 19, workers: [], disabled: false, disabledMsg: null},
-        {id: 20, workers: [], disabled: false, disabledMsg: null},
-        {id: 21, workers: [], disabled: false, disabledMsg: null},
+        {id: 15, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 16, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 17, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 18, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 19, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlen noch 2 Mitarbeiter'},
+        {id: 20, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 21, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
 
-        {id: 22, workers: [], disabled: false, disabledMsg: null},
-        {id: 23, workers: [], disabled: false, disabledMsg: null},
-        {id: 24, workers: [], disabled: false, disabledMsg: null},
-        {id: 25, workers: [], disabled: false, disabledMsg: null},
-        {id: 26, workers: [], disabled: false, disabledMsg: null},
-        {id: 27, workers: [], disabled: false, disabledMsg: null},
-        {id: 28, workers: [], disabled: false, disabledMsg: null}
+        {id: 22, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 23, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 24, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 25, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 26, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 27, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 28, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
       ]
     },
     {
       label: 'Nacht',
+      icon: 'brightness_3',
       shifts: [
-        {id: 29, workers: [], disabled: false, disabledMsg: null},
-        {id: 30, workers: [], disabled: false, disabledMsg: null},
-        {id: 31, workers: [], disabled: false, disabledMsg: null},
-        {id: 32, workers: [], disabled: false, disabledMsg: null},
-        {id: 33, workers: [], disabled: false, disabledMsg: null},
-        {id: 34, workers: [], disabled: false, disabledMsg: null},
-        {id: 35, workers: [], disabled: false, disabledMsg: null},
+        {id: 29, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 30, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 31, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 32, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 33, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 34, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 35, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlt noch 1 Mitarbeiter'},
 
-        {id: 36, workers: [], disabled: false, disabledMsg: null},
-        {id: 37, workers: [], disabled: false, disabledMsg: null},
-        {id: 38, workers: [], disabled: false, disabledMsg: null},
-        {id: 39, workers: [], disabled: false, disabledMsg: null},
-        {id: 40, workers: [], disabled: false, disabledMsg: null},
-        {id: 41, workers: [], disabled: false, disabledMsg: null},
-        {id: 42, workers: [], disabled: false, disabledMsg: null}
+        {id: 36, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 37, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 38, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 39, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 40, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 41, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+        {id: 42, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
       ]
     }
   ];
@@ -166,6 +177,7 @@ export class MainViewComponent implements OnInit {
     const shiftGroupRI = Math.floor(Math.random() * this.shiftGroups.length);
     const shiftRI = Math.floor(Math.random() * this.shiftGroups[shiftGroupRI].shifts.length);
     this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabled = true;
+    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabledMsg = 'Zu viel arbeit für einen Mitarbeiter';
   }
 
 

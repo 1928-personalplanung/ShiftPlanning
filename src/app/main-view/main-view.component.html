@@ -43,11 +43,13 @@
     </div>
 
     <div class="grid-row" *ngFor="let shiftGroup of shiftGroups; let shiftGroupI = index">
-      <div class="grid-label">{{shiftGroup.label}}</div>
+      <div class="grid-label">
+        <mat-icon>{{shiftGroup.icon}}</mat-icon>
+      </div>
 
       <div *ngFor="let shift of shiftGroup.shifts; let shiftI = index"
            cdkDropList [cdkDropListData]="shift"
-           [ngClass]="{'grid-drop-disabled': shift.disabled}">
+           [ngClass]="{'grid-drop-disabled': shift.disabled, 'not-satisfied': shift.notSatisfied}">
         <sp-worker-chip *ngFor="let worker of shift.workers"
                         cdkDrag  (cdkDragStarted)="dragWorkerStart($event)" (cdkDragDropped)="dragWorkerDropped($event)"
                         [worker]="worker"></sp-worker-chip>
