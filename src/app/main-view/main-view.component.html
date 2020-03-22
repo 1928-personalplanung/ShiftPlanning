@@ -4,7 +4,7 @@
       <input type="text" matInput [formControl]="stationControl"  [matAutocomplete]="stationAuto">
     </mat-form-field>
     <mat-autocomplete #stationAuto="matAutocomplete" [displayWith]="stationDisplayFn">
-      <mat-option *ngFor="let station of stations" [value]="station">{{station.label}}</mat-option>
+      <mat-option *ngFor="let station of stations" [value]="station">{{station.name}}</mat-option>
     </mat-autocomplete>
   </div>
 
