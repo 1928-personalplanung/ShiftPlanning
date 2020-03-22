@@ -8,8 +8,6 @@ import { AppModalCtrlService } from './app-modal-ctrl.service';
   styleUrls  : ['./app.component.scss']
 } )
 export class AppComponent {
-  title = 'shift-planning';
-
   constructor( public $drawer: AppDrawerCtrlService,
                public $modal: AppModalCtrlService ) {
   }
