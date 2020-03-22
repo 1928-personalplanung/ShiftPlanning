@@ -229,7 +229,7 @@ export class WorkerTooltip implements OnDestroy, OnInit {
   private _passiveListeners = new Map<string, EventListenerOrEventListenerObject>();
 
   /** Timer started at the last `touchstart` event. */
-  private _touchstartTimeout: number;
+  private _touchstartTimeout: number | any;
 
   /** Emits when the component is destroyed. */
   private readonly _destroyed = new Subject<void>();

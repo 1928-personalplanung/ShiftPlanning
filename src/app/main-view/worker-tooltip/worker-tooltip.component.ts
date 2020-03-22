@@ -33,10 +33,10 @@ export class WorkerTooltipComponent implements OnDestroy {
   tooltipClass: string|string[]|Set<string>|{[key: string]: any};
 
   /** The timeout ID of any current timer set to show the tooltip */
-  _showTimeoutId: number | null;
+  _showTimeoutId: number | any | null;
 
   /** The timeout ID of any current timer set to hide the tooltip */
-  _hideTimeoutId: number | null;
+  _hideTimeoutId: number | any | null;
 
   /** Property watched by the animation framework to show or hide the tooltip */
   _visibility: TooltipVisibility = 'initial';

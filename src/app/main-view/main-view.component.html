@@ -27,11 +27,12 @@
       <input matInput placeholder="Angestellte">
     </mat-form-field>
 
-    <mat-chip-list cdkDropList [cdkDropListData]="workers" id="workers-drop-list" [cdkDropListEnterPredicate]="enterFnct">
-      <mat-chip *ngFor="let worker of workers"
+    <div class="main-view-worker-chip-list"
+         cdkDropList [cdkDropListData]="workers" id="workers-drop-list" [cdkDropListEnterPredicate]="enterFnct">
+      <sp-worker-chip *ngFor="let worker of workers"
                 cdkDrag [cdkDragData]="worker"
-                (click)="showDeatails(worker.id)">{{worker.label}}</mat-chip>
-    </mat-chip-list>
+                [worker]="worker"></sp-worker-chip>
+    </div>
   </div>
 
   <div class="main-view-grid">
@@ -46,7 +47,7 @@
 
       <div *ngFor="let shift of shiftGroup.shifts"
            cdkDropList [cdkDropListData]="shift.workers" (cdkDropListDropped)="dropOnShift(shift, $event)">
-        <mat-chip *ngFor="let worker of shift.workers" cdkDrag>{{worker.label}}</mat-chip>
+        <sp-worker-chip *ngFor="let worker of shift.workers" cdkDrag [worker]="worker"></sp-worker-chip>
       </div>
     </div>
   </div>

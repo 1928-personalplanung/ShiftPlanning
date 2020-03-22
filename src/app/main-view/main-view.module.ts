@@ -3,12 +3,14 @@ import {CommonModule} from '@angular/common';
 
 import {SharedModule} from '../shared/shared.module';
 import {MainViewComponent} from './main-view.component';
-import {WorkerTooltip} from './worker-tooltip/worker-tooltip.directive';
-import {WorkerTooltipComponent} from './worker-tooltip/worker-tooltip.component';
+import { WorkerChipComponent } from './worker-chip/worker-chip.component';
+// import {WorkerTooltip} from './worker-tooltip/worker-tooltip.directive';
+// import {WorkerTooltipComponent} from './worker-tooltip/worker-tooltip.component';
 
 @NgModule({
   declarations: [
     MainViewComponent,
+    WorkerChipComponent,
     // WorkerTooltip,
     // WorkerTooltipComponent
   ],

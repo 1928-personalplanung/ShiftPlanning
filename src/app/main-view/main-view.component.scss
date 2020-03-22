@@ -33,6 +33,14 @@
   padding: 10px;
 }
 
+.main-view-worker-chip-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -4px;
+}
+
 .main-view-grid {
   flex: 1 1 auto;
   padding: 0 10px;

@@ -17,21 +17,21 @@ export class MainViewComponent implements OnInit {
   ];
 
   readonly workers = [
-    {id: 1, label: 'Mitarbeiter 1', hoursWorked: 30, targetHours: 40},
-    {id: 2, label: 'Mitarbeiter 2', hoursWorked: 42, targetHours: 40},
-    {id: 3, label: 'Mitarbeiter 3', hoursWorked: 30, targetHours: 40},
-    {id: 4, label: 'Mitarbeiter 4', hoursWorked: 30, targetHours: 40},
-    {id: 5, label: 'Mitarbeiter 5', hoursWorked: 45, targetHours: 40},
-    {id: 6, label: 'Mitarbeiter 6', hoursWorked: 30, targetHours: 20},
-    {id: 7, label: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
-    {id: 8, label: 'Mitarbeiter 8', hoursWorked: 30, targetHours: 40},
-    {id: 9, label: 'Mitarbeiter 9', hoursWorked: 15, targetHours: 40},
-    {id: 10, label: 'Mitarbeiter 10', hoursWorked: 30, targetHours: 40},
-    {id: 11, label: 'Mitarbeiter 11', hoursWorked: 30, targetHours: 40},
-    {id: 12, label: 'Mitarbeiter 12', hoursWorked: 32, targetHours: 25},
-    {id: 13, label: 'Mitarbeiter 13', hoursWorked: 30, targetHours: 40},
-    {id: 14, label: 'Mitarbeiter 14', hoursWorked: 35, targetHours: 40},
-    {id: 15, label: 'Mitarbeiter 15', hoursWorked: 30, targetHours: 40}
+    {id: 1, name: 'Mitarbeiter 1', hoursWorked: 30, targetHours: 40},
+    {id: 2, name: 'Mitarbeiter 2', hoursWorked: 42, targetHours: 40},
+    {id: 3, name: 'Mitarbeiter 3', hoursWorked: 30, targetHours: 40},
+    {id: 4, name: 'Mitarbeiter 4', hoursWorked: 30, targetHours: 40},
+    {id: 5, name: 'Mitarbeiter 5', hoursWorked: 45, targetHours: 40},
+    {id: 6, name: 'Mitarbeiter 6', hoursWorked: 30, targetHours: 20},
+    {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
+    {id: 8, name: 'Mitarbeiter 8', hoursWorked: 30, targetHours: 40},
+    {id: 9, name: 'Mitarbeiter 9', hoursWorked: 15, targetHours: 40},
+    {id: 10, name: 'Mitarbeiter 10', hoursWorked: 30, targetHours: 40},
+    {id: 11, name: 'Mitarbeiter 11', hoursWorked: 30, targetHours: 40},
+    {id: 12, name: 'Mitarbeiter 12', hoursWorked: 32, targetHours: 25},
+    {id: 13, name: 'Mitarbeiter 13', hoursWorked: 30, targetHours: 40},
+    {id: 14, name: 'Mitarbeiter 14', hoursWorked: 35, targetHours: 40},
+    {id: 15, name: 'Mitarbeiter 15', hoursWorked: 30, targetHours: 40}
   ];
 
   readonly days = [
@@ -61,7 +61,7 @@ export class MainViewComponent implements OnInit {
         {id: 3, workers: []},
         {
           id: 4, workers: [
-            {id: 7, label: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
+            {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
           ]
         },
         {id: 5, workers: []},
