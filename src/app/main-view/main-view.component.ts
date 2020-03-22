@@ -53,7 +53,6 @@ export class MainViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     forkJoin([
       this.$worker.getList().pipe( first() ),
       this.$station.getList().pipe( first() ),
@@ -65,7 +64,6 @@ export class MainViewComponent implements OnInit {
         this.stations = stations;
         this.stationControl = new FormControl(this.stations[0]);
         this.shiftGroups = shiftGroups;
-        this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
       }
     );
 
