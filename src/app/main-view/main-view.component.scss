@@ -10,16 +10,21 @@ $grid-border: #dadce0 1px solid;
   height: 100%;
 }
 
-.main-view-headline {
-  display: flex;
-  flex: 0 0 80px;
-  align-items: center;
-  padding: 5px 10px;
+.main-view-station-select {
+  flex: 0 0 180px;
+}
+
+.main-view-toolbar-spacer-left {
+  flex: 1 1 auto;
+}
+
+.main-view-toolbar-spacer-right {
+  flex: 1 1 180px;
 }
 
 .main-view-date-select {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 0 280px;
   justify-content: center;
 
   h2 {

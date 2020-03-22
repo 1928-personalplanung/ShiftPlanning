@@ -1,11 +1,14 @@
-<div class="main-view-headline">
-  <mat-form-field>
-    <input type="text" matInput placeholder="Station" [formControl]="stationControl"  [matAutocomplete]="stationAuto">
-  </mat-form-field>
+<mat-toolbar color="primary">
+  <div class="main-view-station-select">
+    <mat-form-field>
+      <input type="text" matInput [formControl]="stationControl"  [matAutocomplete]="stationAuto">
+    </mat-form-field>
+    <mat-autocomplete #stationAuto="matAutocomplete" [displayWith]="stationDisplayFn">
+      <mat-option *ngFor="let station of stations" [value]="station">{{station.label}}</mat-option>
+    </mat-autocomplete>
+  </div>
 
-  <mat-autocomplete #stationAuto="matAutocomplete">
-    <mat-option *ngFor="let station of stations" [value]="station.id">{{station.label}}</mat-option>
-  </mat-autocomplete>
+  <span class="main-view-toolbar-spacer-left"></span>
 
   <div class="main-view-date-select">
     <button mat-icon-button (click)="prevWeeks()">
@@ -18,13 +21,15 @@
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
-</div>
+
+  <span class="main-view-toolbar-spacer-right"></span>
+</mat-toolbar>
 
 <ng-container cdkDropListGroup>
   <div class="main-view-workerlist">
     <mat-form-field>
       <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Angestellte">
+      <input matInput placeholder="Mitarbeiter">
     </mat-form-field>
 
     <div class="main-view-worker-chip-list"

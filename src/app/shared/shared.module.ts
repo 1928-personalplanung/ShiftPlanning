@@ -13,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCommonModule, MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {OverlayModule} from '@angular/cdk/overlay';
 
@@ -32,6 +33,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatChipsModule,
     MatTooltipModule,
     MatProgressBarModule,
+    MatToolbarModule,
+    OverlayModule,
     DragDropModule
   ],
   exports: [
@@ -51,6 +54,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatProgressBarModule,
     MatCardModule,
     MatCheckboxModule,
+    MatToolbarModule,
     OverlayModule,
     DragDropModule
   ]

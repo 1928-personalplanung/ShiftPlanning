@@ -154,7 +154,7 @@ export class MainViewComponent implements OnInit {
     }
   ];
 
-  stationControl = new FormControl(null);
+  stationControl = new FormControl(this.stations[0]);
 
   constructor() {
   }
@@ -162,6 +162,10 @@ export class MainViewComponent implements OnInit {
   ngOnInit(): void {
     // todo remove mock
     this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+  }
+
+  stationDisplayFn(station): string {
+    return station && station.label ? station.label : '';
   }
 
   prevWeeks() {
