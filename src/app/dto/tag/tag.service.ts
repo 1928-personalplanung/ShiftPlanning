@@ -4,7 +4,7 @@ import { Tag } from './tag';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { TagTypeService } from './tag-type.service';
-import { skipWhile, switchMap } from 'rxjs/operators';
+import { first, skipWhile, switchMap } from 'rxjs/operators';
 import { worker } from 'cluster';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class TagService {
     return this.$tagType.tagTypeMap$
                .pipe(
                  skipWhile( value => value === undefined ),
+                 first(),
                  switchMap( tagTypeMap => {
                    return new Observable<Tag[]> ( subscriber => {
                      let url = environment.api.tag;
