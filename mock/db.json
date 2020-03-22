@@ -1,0 +1,377 @@
+{
+  "station": [
+    {
+      "id": 1,
+      "name": "2b"
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "alpha"
+    }
+  ],
+  "tagtypes": [
+    {
+      "id": 1,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 2,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 3,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 4,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 5,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 6,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 7,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 8,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 9,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 10,
+      "type": "vacation",
+      "contagious": false,
+      "defaultDurationInSeconds": 0
+    },
+    {
+      "id": 11,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 12,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 13,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 14,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 15,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 16,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 17,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 18,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 19,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 20,
+      "type": "sick",
+      "contagious": false,
+      "defaultDurationInSeconds": 496800
+    },
+    {
+      "id": 21,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 22,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 23,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 24,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 25,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 26,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 27,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 28,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 29,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    },
+    {
+      "id": 30,
+      "type": "sick",
+      "contagious": true,
+      "defaultDurationInSeconds": 1209600
+    }
+  ],
+  "tag": [{
+    "id": 1,
+    "workerId": 1,
+    "tagTypeId": 1,
+    "startDate": 1584342960,
+    "endDate": 1584774960
+  }, {
+    "id": 2,
+    "workerId": 2,
+    "tagTypeId": 2,
+    "startDate": 1584256560,
+    "endDate": 1584688560
+  }, {
+    "id": 3,
+    "workerId": 3,
+    "tagTypeId": 3,
+    "startDate": 1584170160,
+    "endDate": 1584602160
+  }, {
+    "id": 4,
+    "workerId": 4,
+    "tagTypeId": 4,
+    "startDate": 1584083760,
+    "endDate": 1584515760
+  }, {
+    "id": 5,
+    "workerId": 5,
+    "tagTypeId": 5,
+    "startDate": 1583997360,
+    "endDate": 1584429360
+  }, {
+    "id": 6,
+    "workerId": 6,
+    "tagTypeId": 6,
+    "startDate": 1583910960,
+    "endDate": 1584342960
+  }, {
+    "id": 7,
+    "workerId": 7,
+    "tagTypeId": 7,
+    "startDate": 1583824560,
+    "endDate": 1584256560
+  }, {
+    "id": 8,
+    "workerId": 8,
+    "tagTypeId": 8,
+    "startDate": 1583738160,
+    "endDate": 1584170160
+  }, {
+    "id": 9,
+    "workerId": 9,
+    "tagTypeId": 9,
+    "startDate": 1583651760,
+    "endDate": 1584083760
+  }, {
+    "id": 10,
+    "workerId": 10,
+    "tagTypeId": 10,
+    "startDate": 1583565360,
+    "endDate": 1583997360
+  }, {
+    "id": 11,
+    "workerId": 11,
+    "tagTypeId": 11,
+    "startDate": 1584861360,
+    "endDate": 1585293360
+  }, {
+    "id": 12,
+    "workerId": 12,
+    "tagTypeId": 12,
+    "startDate": 1584774960,
+    "endDate": 1585206960
+  }, {
+    "id": 13,
+    "workerId": 13,
+    "tagTypeId": 13,
+    "startDate": 1584688560,
+    "endDate": 1585120560
+  }, {
+    "id": 14,
+    "workerId": 14,
+    "tagTypeId": 14,
+    "startDate": 1584602160,
+    "endDate": 1585034160
+  }, {
+    "id": 15,
+    "workerId": 15,
+    "tagTypeId": 15,
+    "startDate": 1584515760,
+    "endDate": 1584947760
+  }, {
+    "id": 16,
+    "workerId": 16,
+    "tagTypeId": 16,
+    "startDate": 1584429360,
+    "endDate": 1584861360
+  }, {
+    "id": 17,
+    "workerId": 17,
+    "tagTypeId": 17,
+    "startDate": 1584342960,
+    "endDate": 1584774960
+  }, {
+    "id": 18,
+    "workerId": 18,
+    "tagTypeId": 18,
+    "startDate": 1584256560,
+    "endDate": 1584688560
+  }, {
+    "id": 19,
+    "workerId": 19,
+    "tagTypeId": 19,
+    "startDate": 1584170160,
+    "endDate": 1584602160
+  }, {
+    "id": 20,
+    "workerId": 20,
+    "tagTypeId": 20,
+    "startDate": 1584083760,
+    "endDate": 1584515760
+  }, {
+    "id": 21,
+    "workerId": 21,
+    "tagTypeId": 21,
+    "startDate": 1584861360,
+    "endDate": 1586070960
+  }, {
+    "id": 22,
+    "workerId": 22,
+    "tagTypeId": 22,
+    "startDate": 1584774960,
+    "endDate": 1585984560
+  }, {
+    "id": 23,
+    "workerId": 23,
+    "tagTypeId": 23,
+    "startDate": 1584688560,
+    "endDate": 1585898160
+  }, {
+    "id": 24,
+    "workerId": 24,
+    "tagTypeId": 24,
+    "startDate": 1584602160,
+    "endDate": 1585811760
+  }, {
+    "id": 25,
+    "workerId": 25,
+    "tagTypeId": 25,
+    "startDate": 1584515760,
+    "endDate": 1585725360
+  }, {
+    "id": 26,
+    "workerId": 26,
+    "tagTypeId": 26,
+    "startDate": 1584429360,
+    "endDate": 1585638960
+  }, {
+    "id": 27,
+    "workerId": 27,
+    "tagTypeId": 27,
+    "startDate": 1584342960,
+    "endDate": 1585552560
+  }, {
+    "id": 28,
+    "workerId": 28,
+    "tagTypeId": 28,
+    "startDate": 1584256560,
+    "endDate": 1585466160
+  }, {
+    "id": 29,
+    "workerId": 29,
+    "tagTypeId": 29,
+    "startDate": 1584170160,
+    "endDate": 1585379760
+  }, {
+    "id": 30,
+    "workerId": 30,
+    "tagTypeId": 30,
+    "startDate": 1584083760,
+    "endDate": 1585293360
+  }]
+}

@@ -5,5 +5,5 @@ export interface Shift {
   shiftTypeId: number;
   startDate: number;
   endDate: number;
-  worker: Worker[];
+  worker?: Worker[];
 }
