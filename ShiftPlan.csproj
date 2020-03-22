@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>E:\Workspaces WirVsVirus\ShiftPlan\ShiftPlanning\ShiftPlan.xml</DocumentationFile>
+    <DocumentationFile>../bin/Debug/netcoreapp3.1/ShiftPlan.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
