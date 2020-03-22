@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { AppDrawerCtrlService } from '../../app-drawer-ctrl.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -7,11 +7,13 @@ import { WorkerService } from '../../dto/worker/worker.service';
 import { Worker } from '../../dto/worker/worker';
 import { share, tap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TagTypes } from '../../dto/tag/tag-types.enum';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
   templateUrl: './detail-drawer.component.html',
-  styleUrls  : ['./detail-drawer.component.scss']
+  styleUrls  : ['./detail-drawer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class DetailDrawerComponent implements OnInit {
 
@@ -42,6 +44,8 @@ export class DetailDrawerComponent implements OnInit {
 
   ratingStyle;
 
+
+  TagTypes = TagTypes;
   constructor( public drawer: AppDrawerCtrlService,
                private workers: WorkerService,
                private actR: ActivatedRoute,
@@ -63,6 +67,11 @@ export class DetailDrawerComponent implements OnInit {
     this.drawer.closeDrawer ();
   }
 
+
+  getDate(timestamp){
+    console.log(new Date(timestamp * 1000))
+    return new Date(timestamp * 1000)
+  }
   ngOnInit(): void {
 
   }

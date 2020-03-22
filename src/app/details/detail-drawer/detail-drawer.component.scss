@@ -74,6 +74,15 @@
           }
         }
 
+        &.workmode{
+          > div{
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.025);
+            font-weight: bold;
+            padding: .5rem;
+          }
+        }
+
 
         &.rating {
 
@@ -106,19 +115,37 @@
 
             li {
               display: flex;
+              align-items: center;
+              user-select: none;
+              cursor: pointer;
+              i{
+                margin: 0 1rem 0 0;
+              }
 
-              &.holiday{
+              span:first-of-type{
+                flex-grow: 1;
+              }
+
+              .date{
+                font-weight: bold;
+              }
+
+              .connector{
+                margin: 0 .5rem;
+              }
+              &.vacation{
                 background-color: rgba(63, 176, 88, 0.22);
               }
 
-              &.sickness{
+              &.sick{
                 background-color: rgba(255, 0, 0, 0.22);
               }
 
               &::after {
                 font-family: 'Material Icons';
                 content: '\e8b6';
-                flex-grow: 1;
+                width: 2rem;
+                font-weight: bold;
                 text-align: right;
               }
             }

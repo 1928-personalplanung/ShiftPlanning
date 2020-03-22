@@ -1,11 +1,16 @@
-<div class="maindetails" [class.hasData]="(this.worker | async)">
+<div class="maindetails" *ngIf="this.worker | async as myWorker" [class.hasData]="myWorker">
 
   <i class="material-icons closer click" (click)="this.close()">close</i>
   <div class="content">
 
     <div>
-      <h1>{{(this.worker | async)?.name}}</h1>
+      <h1>{{myWorker?.name}}</h1>
     </div>
+    <div class="workmode">
+      <h3>Stellentyp</h3>
+      <div>{{myWorker?.workMode.name}}</div>
+    </div>
+
     <div class="rating">
       <h3>Gefährdung</h3>
       <div class="bars">
@@ -14,7 +19,7 @@
       </div>
 
     </div>
-    <div class="hours" *ngIf="this.worker | async as myWorker">
+    <div class="hours" >
       <span>{{myWorker?.hoursWorkedInCurrentMonth + ' / ' + myWorker?.workMode.hoursPerMonth + ' Stunden geplant'}}</span>
       <mat-progress-bar
         [value]="(myWorker?.hoursWorkedInCurrentMonth / myWorker?.workMode.hoursPerMonth) * 100"
@@ -34,9 +39,20 @@
     <div class="adding">
       <h3>Abwesenheit</h3>
       <ul>
-        <li class="holiday">Urlaub - 10.10.2010</li>
-        <li class="sickness">Krank - 10.10.2010</li>
-        <li class="holiday">Urlaub - 10.10.2010</li>
+        <li *ngFor="let t of myWorker.tags" [ngSwitch]="t.tagType.type"[classList]="t.tagType.type">
+            <ng-container *ngSwitchCase="TagTypes.VACATION">
+              <i class="material-icons">flight_takeoff</i>
+              <span>Urlaub</span>
+            </ng-container>
+            <ng-container *ngSwitchCase="TagTypes.SICK">
+              <i class="material-icons">healing</i>
+              <span>Krankheit</span>
+            </ng-container>
+
+          <span class="date">{{this.getDate(t.startDate) | date:'dd.MM.yyyy'}}</span>
+          <span class="connector"> bis </span>
+          <span class="date">{{this.getDate(t.endDate) | date:'dd.MM.yyyy'}}</span>
+        </li>
       </ul>
       <button mat-fab (click)="modal.open('offtime')"><i class="material-icons">add</i></button>
     </div>
