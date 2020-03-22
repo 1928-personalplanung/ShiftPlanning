@@ -28,9 +28,9 @@
     </mat-form-field>
 
     <div class="main-view-worker-chip-list"
-         cdkDropList [cdkDropListData]="workers" id="workers-drop-list" [cdkDropListEnterPredicate]="enterFnct">
+         cdkDropList [cdkDropListData]="workers" id="workers-drop-list">
       <sp-worker-chip *ngFor="let worker of workers"
-                cdkDrag [cdkDragData]="worker"
+                cdkDrag [cdkDragData]="worker" (cdkDragStarted)="dragWorkerStart($event)" (cdkDragDropped)="dragWorkerDropped($event)"
                 [worker]="worker"></sp-worker-chip>
     </div>
   </div>
@@ -42,12 +42,15 @@
       <div *ngFor="let day of days">{{day}}</div>
     </div>
 
-    <div class="grid-row" *ngFor="let shiftGroup of shiftGroups">
+    <div class="grid-row" *ngFor="let shiftGroup of shiftGroups; let shiftGroupI = index">
       <div class="grid-label">{{shiftGroup.label}}</div>
 
-      <div *ngFor="let shift of shiftGroup.shifts"
-           cdkDropList [cdkDropListData]="shift.workers" (cdkDropListDropped)="dropOnShift(shift, $event)">
-        <sp-worker-chip *ngFor="let worker of shift.workers" cdkDrag [worker]="worker"></sp-worker-chip>
+      <div *ngFor="let shift of shiftGroup.shifts; let shiftI = index"
+           cdkDropList [cdkDropListData]="shift"
+           [ngClass]="{'grid-drop-disabled': shift.disabled}">
+        <sp-worker-chip *ngFor="let worker of shift.workers"
+                        cdkDrag  (cdkDragStarted)="dragWorkerStart($event)" (cdkDragDropped)="dragWorkerDropped($event)"
+                        [worker]="worker"></sp-worker-chip>
       </div>
     </div>
   </div>

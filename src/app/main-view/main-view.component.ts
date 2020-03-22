@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem, CdkDragStart} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'sp-main-view',
@@ -56,65 +56,68 @@ export class MainViewComponent implements OnInit {
     {
       label: 'Frueh',
       shifts: [
-        {id: 1, workers: []},
-        {id: 2, workers: []},
-        {id: 3, workers: []},
+        {id: 1, workers: [], disabled: false, disabledMsg: null},
+        {id: 2, workers: [], disabled: false, disabledMsg: null},
+        {id: 3, workers: [], disabled: false, disabledMsg: null},
         {
-          id: 4, workers: [
+          id: 4,
+          workers: [
             {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
-          ]
+          ],
+          disabled: false,
+          disabledMsg: null
         },
-        {id: 5, workers: []},
-        {id: 6, workers: []},
-        {id: 7, workers: []},
+        {id: 5, workers: [], disabled: false, disabledMsg: null},
+        {id: 6, workers: [], disabled: false, disabledMsg: null},
+        {id: 7, workers: [], disabled: false, disabledMsg: null},
 
-        {id: 8, workers: []},
-        {id: 9, workers: []},
-        {id: 10, workers: []},
-        {id: 11, workers: []},
-        {id: 12, workers: []},
-        {id: 13, workers: []},
-        {id: 14, workers: []}
+        {id: 8, workers: [], disabled: false, disabledMsg: null},
+        {id: 9, workers: [], disabled: false, disabledMsg: null},
+        {id: 10, workers: [], disabled: false, disabledMsg: null},
+        {id: 11, workers: [], disabled: false, disabledMsg: null},
+        {id: 12, workers: [], disabled: false, disabledMsg: null},
+        {id: 13, workers: [], disabled: false, disabledMsg: null},
+        {id: 14, workers: [], disabled: false, disabledMsg: null}
       ]
     },
     {
       label: 'Spaet',
       shifts: [
-        {id: 15, workers: []},
-        {id: 16, workers: []},
-        {id: 17, workers: []},
-        {id: 18, workers: []},
-        {id: 19, workers: []},
-        {id: 20, workers: []},
-        {id: 21, workers: []},
+        {id: 15, workers: [], disabled: false, disabledMsg: null},
+        {id: 16, workers: [], disabled: false, disabledMsg: null},
+        {id: 17, workers: [], disabled: false, disabledMsg: null},
+        {id: 18, workers: [], disabled: false, disabledMsg: null},
+        {id: 19, workers: [], disabled: false, disabledMsg: null},
+        {id: 20, workers: [], disabled: false, disabledMsg: null},
+        {id: 21, workers: [], disabled: false, disabledMsg: null},
 
-        {id: 22, workers: []},
-        {id: 23, workers: []},
-        {id: 24, workers: []},
-        {id: 25, workers: []},
-        {id: 26, workers: []},
-        {id: 27, workers: []},
-        {id: 28, workers: []}
+        {id: 22, workers: [], disabled: false, disabledMsg: null},
+        {id: 23, workers: [], disabled: false, disabledMsg: null},
+        {id: 24, workers: [], disabled: false, disabledMsg: null},
+        {id: 25, workers: [], disabled: false, disabledMsg: null},
+        {id: 26, workers: [], disabled: false, disabledMsg: null},
+        {id: 27, workers: [], disabled: false, disabledMsg: null},
+        {id: 28, workers: [], disabled: false, disabledMsg: null}
       ]
     },
     {
       label: 'Nacht',
       shifts: [
-        {id: 29, workers: []},
-        {id: 30, workers: []},
-        {id: 31, workers: []},
-        {id: 32, workers: []},
-        {id: 33, workers: []},
-        {id: 34, workers: []},
-        {id: 35, workers: []},
+        {id: 29, workers: [], disabled: false, disabledMsg: null},
+        {id: 30, workers: [], disabled: false, disabledMsg: null},
+        {id: 31, workers: [], disabled: false, disabledMsg: null},
+        {id: 32, workers: [], disabled: false, disabledMsg: null},
+        {id: 33, workers: [], disabled: false, disabledMsg: null},
+        {id: 34, workers: [], disabled: false, disabledMsg: null},
+        {id: 35, workers: [], disabled: false, disabledMsg: null},
 
-        {id: 36, workers: []},
-        {id: 37, workers: []},
-        {id: 38, workers: []},
-        {id: 39, workers: []},
-        {id: 40, workers: []},
-        {id: 41, workers: []},
-        {id: 42, workers: []}
+        {id: 36, workers: [], disabled: false, disabledMsg: null},
+        {id: 37, workers: [], disabled: false, disabledMsg: null},
+        {id: 38, workers: [], disabled: false, disabledMsg: null},
+        {id: 39, workers: [], disabled: false, disabledMsg: null},
+        {id: 40, workers: [], disabled: false, disabledMsg: null},
+        {id: 41, workers: [], disabled: false, disabledMsg: null},
+        {id: 42, workers: [], disabled: false, disabledMsg: null}
       ]
     }
   ];
@@ -135,28 +138,54 @@ export class MainViewComponent implements OnInit {
     // todo change shifts
   }
 
-  showDeatails(workerId: number) {
-    // todo open detail drawer
+  dragWorkerStart(event: CdkDragStart) {
+    console.log('dragStart', event, event.source.data);
+
+    const shiftGroupRI = Math.floor(Math.random() * this.shiftGroups.length);
+    const shiftRI = Math.floor(Math.random() * this.shiftGroups[shiftGroupRI].shifts.length);
+    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabled = true;
   }
 
-  enterFnct = (drag, drop) => {
-    console.log('enterPredicate', drag, drop);
-    return true;
-  };
 
-  dropOnShift(shift, event: CdkDragDrop<any>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else if (event.previousContainer.id === 'workers-drop-list') {
-      copyArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+  dragWorkerDropped(event: CdkDragDrop<any>) {
+    console.log('cdkDragDropped', event);
+
+    // todo reset disabled
+
+    // aus der worker list in zelle - check disabled -> copy
+    if (event.previousContainer.id === 'workers-drop-list' && event.container.id !== 'workers-drop-list') {
+      if (!event.container.data.disabled) {
+        copyArrayItem(
+          event.previousContainer.data,
+          event.container.data.workers,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
+
+    // von zelle zu zelle
+    // gleiche zelle -> move
+    // unterschiedliche zellen - check disabled -> transfer
+    } else if (event.previousContainer.id !== 'workers-drop-list' && event.container.id !== 'workers-drop-list') {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data.workers, event.previousIndex, event.currentIndex);
+
+      } else if (!event.container.data.disabled) {
+        transferArrayItem(
+          event.previousContainer.data.workers,
+          event.container.data.workers,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
+
+    // von zelle zu worker list -> remove von zelle
+    } else if (event.previousContainer.id !== 'workers-drop-list' && event.container.id === 'workers-drop-list') {
+      event.previousContainer.data.workers.splice(event.previousIndex, 1);
+
+    // von worker list zu worker list -> ignore
     } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+
     }
   }
 }
