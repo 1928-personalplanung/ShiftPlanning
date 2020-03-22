@@ -10,7 +10,7 @@ using ShiftPlan.Data;
 
 namespace ShiftPlan.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class WorkModesController : ControllerBase
     {

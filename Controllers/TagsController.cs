@@ -12,7 +12,7 @@ namespace ShiftPlan.Controllers
 {
     [Produces("application/json")]
     [ProducesResponseType(typeof(List<Tag>), 200)]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class TagsController : ControllerBase
     {

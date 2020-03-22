@@ -10,8 +10,7 @@ using ShiftPlan.Data;
 
 namespace ShiftPlan.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+     [Route("api/[controller]/[Action]")]
     public class TagTypesController : ControllerBase
     {
         private readonly MainDBContext _context;

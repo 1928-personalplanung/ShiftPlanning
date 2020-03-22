@@ -12,7 +12,7 @@ namespace ShiftPlan.Controllers
 {
     [Produces("application/json")]
     [ProducesResponseType(typeof(List<Discipline>), 200)]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class DisciplinesController : ControllerBase
     {
