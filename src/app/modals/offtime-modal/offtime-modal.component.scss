@@ -4,15 +4,43 @@
 }
 :host(sp-offtime-modal) {
   mat-card {
-    width: 500px;
+    width: 400px;
     min-height: 200px;
 
     mat-card-header {
 
       h3{
         flex-grow: 1;
+
       }
 
+    }
+
+    mat-card-content{
+      form{
+        margin: 1rem 0 0 0;
+
+        display: flex;
+        flex-direction: column;
+
+        mat-checkbox{
+          margin:1rem 0;
+          color: #ff0000;
+          font-weight: bold;
+        }
+      }
+    }
+
+    mat-card-footer{
+      padding: .25rem;
+      display: flex;
+
+      button{
+        margin: .25rem;
+      }
+      .spacer{
+        flex: 1;
+      }
     }
   }
 }

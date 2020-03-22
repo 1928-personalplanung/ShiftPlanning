@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppModalCtrlService } from '../../app-modal-ctrl.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'sp-offtime-modal',
@@ -8,7 +9,21 @@ import { AppModalCtrlService } from '../../app-modal-ctrl.service';
 })
 export class OfftimeModalComponent implements OnInit {
 
-  constructor(public modal: AppModalCtrlService) { }
+
+  offtimeForm: FormGroup;
+
+  constructor(public modal: AppModalCtrlService,
+              private fb: FormBuilder) {
+
+
+    this.offtimeForm = this.fb.group({
+      start: [new Date(), Validators.required],
+      end: [new Date(), Validators.required],
+      corona: [false],
+      note: []
+    });
+
+  }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,40 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Hallo Welt</mat-card-title>
+    <mat-card-title>Abwesenheit</mat-card-title>
     <i class="material-icons closer click" (click)="this.modal.closeModal()">close</i>
   </mat-card-header>
   <mat-card-content>
+    <form [formGroup]="this.offtimeForm">
+
+      <mat-form-field>
+        <mat-label>Beginn</mat-label>
+        <input matInput [matDatepicker]="pickerStart" formControlName="start">
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ende</mat-label>
+        <input matInput [matDatepicker]="pickerEnd" formControlName="end">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+        <mat-checkbox formControlName="corona">Corona</mat-checkbox>
+
+      <mat-form-field class="comment">
+        <mat-label>Notiz:</mat-label>
+        <textarea matInput placeholder="Notiz"
+                  mat-autosize [matAutosizeMinRows]="5"
+                  formControlName="note"></textarea>
+      </mat-form-field>
+    </form>
 
   </mat-card-content>
+  <mat-card-footer>
+      <button mat-raised-button (click)="this.modal.closeModal()" color="warn"><i class="material-icons">delete</i></button>
+      <div class="spacer"></div>
+      <button mat-raised-button (click)="this.modal.closeModal()">abbrechen</button>
+      <button mat-raised-button color="primary">speichern</button>
+
+
+  </mat-card-footer>
 </mat-card>
