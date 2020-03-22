@@ -1,8 +1,10 @@
 import { Tag } from '../tag/tag';
+import { WorkMode } from './work-mode';
 
 export interface Worker {
   id: number;
   workModeId?: number;
+  workMode?: WorkMode;
   disciplineId?: number;
   name: string;
   stationId?: number;
