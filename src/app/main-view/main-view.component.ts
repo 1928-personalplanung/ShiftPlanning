@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Worker } from '../dto/worker/worker';
-import { TagTypes } from '../dto/tag/tag-types.enum';
-import { PlannerService, ShiftGroupListItem } from './planner.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {debounceTime, distinctUntilChanged, filter, switchMap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+
+import {Worker} from '../dto/worker/worker';
+import {PlannerService, ShiftGroupListItem} from './planner.service';
 
 @Component({
   selector: 'sp-main-view',
@@ -155,20 +157,34 @@ export class MainViewComponent implements OnInit {
   //   }
   // ];
 
-  stationControl = new FormControl(this.stations[0]);
   shiftGroups: ShiftGroupListItem[];
 
-  constructor( private $planner: PlannerService) {
+  stationControl = new FormControl(this.stations[0]);
+  workerControl = new FormControl(null);
+
+  constructor(private $planner: PlannerService) {
   }
 
   ngOnInit(): void {
     // todo remove mock
     // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
-    this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
-             .subscribe( n => {
-               this.shiftGroups = n;
-               // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
-             } );
+    this.$planner.getShiftFromRangeGrouped('2020-03-16T00:00:00', 14)
+      .subscribe(n => {
+        this.shiftGroups = n;
+        // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+      });
+
+    this.workerControl.valueChanges.pipe(
+      debounceTime(250),
+      filter(value => value.length > 3 || value === ''),
+      distinctUntilChanged(),
+      switchMap(value => {
+        return value === '' ? of(this.workers) :
+          of(this.workers.filter(worker => worker.name.indexOf(value) > -1));
+      })
+    ).subscribe(result => {
+      this.filteredWorkers = result;
+    });
   }
 
   stationDisplayFn(station): string {
@@ -188,8 +204,8 @@ export class MainViewComponent implements OnInit {
 
     const shiftGroupRI = Math.floor(Math.random() * this.shiftGroups.length);
     const shiftRI = Math.floor(Math.random() * this.shiftGroups[shiftGroupRI].shifts.length);
-    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabled = true;
-    this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabledMsg = 'Zu viel arbeit für einen Mitarbeiter';
+    // this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabled = true;
+    // this.shiftGroups[shiftGroupRI].shifts[shiftRI].disabledMsg = 'Zu viel arbeit für einen Mitarbeiter';
   }
 
 

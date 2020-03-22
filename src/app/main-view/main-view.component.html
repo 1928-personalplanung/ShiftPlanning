@@ -26,20 +26,19 @@
 </mat-toolbar>
 
 <ng-container cdkDropListGroup>
-  <div class="main-view-workerlist">
+  <mat-card>
     <mat-form-field>
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Mitarbeiter">
+      <input matInput [formControl]="workerControl" placeholder="Mitarbeiter">
     </mat-form-field>
 
     <div class="main-view-worker-chip-list"
          cdkDropList [cdkDropListData]="workers" id="workers-drop-list">
-      <sp-worker-chip *ngFor="let worker of workers"
+      <sp-worker-chip *ngFor="let worker of filteredWorkers"
                 cdkDrag [cdkDragData]="worker" (cdkDragStarted)="dragWorkerStart($event)" (cdkDragDropped)="dragWorkerDropped($event)"
                     spWorkerInfoTooltip [numValue]="20" [maxValue]="40" toolLabel="Arbeitszeit"
                 [worker]="worker"></sp-worker-chip>
     </div>
-  </div>
+  </mat-card>
 
   <div class="main-view-grid">
     <div class="grid-row--headline">
