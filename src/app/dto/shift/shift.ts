@@ -1,5 +1,5 @@
-import { Worker } from './worker';
-import { Constrain } from './constrain';
+import { Worker } from '../worker/worker';
+import { Constrain } from '../constrain';
 
 export interface Shift {
   id: number;
@@ -8,4 +8,5 @@ export interface Shift {
   startDate: number;
   endDate: number;
   worker?: Worker[];
+  forLocalMockWorkerIDs?: number[];
 }

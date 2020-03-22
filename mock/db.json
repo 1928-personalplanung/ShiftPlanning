@@ -480,408 +480,406 @@
     }
   ],
   "worker": [
-    [
-      {
-        "id": 1,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA001",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 160,
-        "score": 18
-      },
-      {
-        "id": 2,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA002",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 95,
-        "score": 54
-      },
-      {
-        "id": 3,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA003",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 128,
-        "score": 51
-      },
-      {
-        "id": 4,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA004",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 155,
-        "score": 72
-      },
-      {
-        "id": 5,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA005",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 66,
-        "score": 9
-      },
-      {
-        "id": 6,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA006",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 152,
-        "score": 38
-      },
-      {
-        "id": 7,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA007",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 80,
-        "score": 83
-      },
-      {
-        "id": 8,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA008",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 136,
-        "score": 71
-      },
-      {
-        "id": 9,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA009",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 48,
-        "score": 85
-      },
-      {
-        "id": 10,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA010",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 177,
-        "score": 11
-      },
-      {
-        "id": 11,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA011",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 73,
-        "score": 18
-      },
-      {
-        "id": 12,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA012",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 136,
-        "score": 51
-      },
-      {
-        "id": 13,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA013",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 78,
-        "score": 69
-      },
-      {
-        "id": 14,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA014",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 42,
-        "score": 97
-      },
-      {
-        "id": 15,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA015",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 43,
-        "score": 15
-      },
-      {
-        "id": 16,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA016",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 78,
-        "score": 70
-      },
-      {
-        "id": 17,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA017",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 82,
-        "score": 31
-      },
-      {
-        "id": 18,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA018",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 92,
-        "score": 71
-      },
-      {
-        "id": 19,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA019",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 156,
-        "score": 59
-      },
-      {
-        "id": 20,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA020",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 41,
-        "score": 54
-      },
-      {
-        "id": 21,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA021",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 64,
-        "score": 55
-      },
-      {
-        "id": 22,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA022",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 88,
-        "score": 83
-      },
-      {
-        "id": 23,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA023",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 89,
-        "score": 79
-      },
-      {
-        "id": 24,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA024",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 173,
-        "score": 93
-      },
-      {
-        "id": 25,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA025",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 133,
-        "score": 28
-      },
-      {
-        "id": 26,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA026",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 169,
-        "score": 19
-      },
-      {
-        "id": 27,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA027",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 54,
-        "score": 100
-      },
-      {
-        "id": 28,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA028",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 168,
-        "score": 71
-      },
-      {
-        "id": 29,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA029",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 62,
-        "score": 12
-      },
-      {
-        "id": 30,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA030",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 156,
-        "score": 47
-      },
-      {
-        "id": 31,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA031",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 169,
-        "score": 14
-      },
-      {
-        "id": 32,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA032",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 160,
-        "score": 8
-      },
-      {
-        "id": 33,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA033",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 103,
-        "score": 57
-      },
-      {
-        "id": 34,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA034",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 48,
-        "score": 2
-      },
-      {
-        "id": 35,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA035",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 146,
-        "score": 100
-      },
-      {
-        "id": 36,
-        "workModeId": 1,
-        "disciplineId": 1,
-        "name": "MA036",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 56,
-        "score": 75
-      },
-      {
-        "id": 37,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA037",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 90,
-        "score": 38
-      },
-      {
-        "id": 38,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA038",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 164,
-        "score": 50
-      },
-      {
-        "id": 39,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA039",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 55,
-        "score": 9
-      },
-      {
-        "id": 40,
-        "workModeId": 2,
-        "disciplineId": 1,
-        "name": "MA040",
-        "stationId": 1,
-        "teamId": 1,
-        "hoursWorkedInCurrentMonth": 180,
-        "score": 94
-      }
-    ]
+    {
+      "id": 1,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA001",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 160,
+      "score": 18
+    },
+    {
+      "id": 2,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA002",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 95,
+      "score": 54
+    },
+    {
+      "id": 3,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA003",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 128,
+      "score": 51
+    },
+    {
+      "id": 4,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA004",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 155,
+      "score": 72
+    },
+    {
+      "id": 5,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA005",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 66,
+      "score": 9
+    },
+    {
+      "id": 6,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA006",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 152,
+      "score": 38
+    },
+    {
+      "id": 7,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA007",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 80,
+      "score": 83
+    },
+    {
+      "id": 8,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA008",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 136,
+      "score": 71
+    },
+    {
+      "id": 9,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA009",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 48,
+      "score": 85
+    },
+    {
+      "id": 10,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA010",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 177,
+      "score": 11
+    },
+    {
+      "id": 11,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA011",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 73,
+      "score": 18
+    },
+    {
+      "id": 12,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA012",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 136,
+      "score": 51
+    },
+    {
+      "id": 13,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA013",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 78,
+      "score": 69
+    },
+    {
+      "id": 14,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA014",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 42,
+      "score": 97
+    },
+    {
+      "id": 15,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA015",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 43,
+      "score": 15
+    },
+    {
+      "id": 16,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA016",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 78,
+      "score": 70
+    },
+    {
+      "id": 17,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA017",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 82,
+      "score": 31
+    },
+    {
+      "id": 18,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA018",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 92,
+      "score": 71
+    },
+    {
+      "id": 19,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA019",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 156,
+      "score": 59
+    },
+    {
+      "id": 20,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA020",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 41,
+      "score": 54
+    },
+    {
+      "id": 21,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA021",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 64,
+      "score": 55
+    },
+    {
+      "id": 22,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA022",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 88,
+      "score": 83
+    },
+    {
+      "id": 23,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA023",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 89,
+      "score": 79
+    },
+    {
+      "id": 24,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA024",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 173,
+      "score": 93
+    },
+    {
+      "id": 25,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA025",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 133,
+      "score": 28
+    },
+    {
+      "id": 26,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA026",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 169,
+      "score": 19
+    },
+    {
+      "id": 27,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA027",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 54,
+      "score": 100
+    },
+    {
+      "id": 28,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA028",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 168,
+      "score": 71
+    },
+    {
+      "id": 29,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA029",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 62,
+      "score": 12
+    },
+    {
+      "id": 30,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA030",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 156,
+      "score": 47
+    },
+    {
+      "id": 31,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA031",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 169,
+      "score": 14
+    },
+    {
+      "id": 32,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA032",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 160,
+      "score": 8
+    },
+    {
+      "id": 33,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA033",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 103,
+      "score": 57
+    },
+    {
+      "id": 34,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA034",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 48,
+      "score": 2
+    },
+    {
+      "id": 35,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA035",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 146,
+      "score": 100
+    },
+    {
+      "id": 36,
+      "workModeId": 1,
+      "disciplineId": 1,
+      "name": "MA036",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 56,
+      "score": 75
+    },
+    {
+      "id": 37,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA037",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 90,
+      "score": 38
+    },
+    {
+      "id": 38,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA038",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 164,
+      "score": 50
+    },
+    {
+      "id": 39,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA039",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 55,
+      "score": 9
+    },
+    {
+      "id": 40,
+      "workModeId": 2,
+      "disciplineId": 1,
+      "name": "MA040",
+      "stationId": 1,
+      "teamId": 1,
+      "hoursWorkedInCurrentMonth": 180,
+      "score": 94
+    }
   ],
   "shift": [
     {
@@ -895,7 +893,12 @@
         }
       ],
       "startDate": 1584856500,
-      "endDate": 1584888600
+      "endDate": 1584888600,
+      "forLocalMockWorkerIDs": [
+        1,
+        11,
+        12
+      ]
     }
   ]
 }
