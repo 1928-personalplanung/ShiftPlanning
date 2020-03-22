@@ -1,13 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { DetailsModule } from './details/details.module';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ModalsModule } from './modals/modals.module';
 import {MainViewModule} from './main-view/main-view.module';
+import {DetailsModule} from './details/details.module';
+import {ModalsModule} from './modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {MainViewModule} from './main-view/main-view.module';
     BrowserAnimationsModule,
     MatSidenavModule,
     DetailsModule,
-    ModalsModule
+    ModalsModule,
     MainViewModule
   ],
   providers: [],

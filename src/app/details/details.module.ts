@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DetailDrawerComponent } from './detail-drawer/detail-drawer.component';
-import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DetailDrawerComponent} from './detail-drawer/detail-drawer.component';
+import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
 
-@NgModule ( {
+@NgModule({
   declarations: [
     DetailDrawerComponent
   ],
-  exports     : [
+  exports: [
     DetailDrawerComponent
   ],
-  imports     : [
+  imports: [
     CommonModule,
     SharedModule,
     RouterModule
   ]
-} )
+})
 export class DetailsModule {
 }
