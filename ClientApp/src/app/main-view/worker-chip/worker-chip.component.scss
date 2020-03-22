@@ -1,0 +1,59 @@
+@import '../../../scss/component';
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: 1px;
+  min-height: 28px;
+  margin: 4px;
+  padding: 8px;
+
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 2px;
+
+  color: rgba(0, 0, 0, 0.87);
+
+  cursor: default;
+  transform: translateZ(0);
+
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .material-icons {
+    padding-right: 4px;
+
+    &.vacation {
+      color: #008000;
+    }
+
+    &.sick {
+      color: #ffa500;
+    }
+  }
+
+  &.booking-available {
+    background-color: #00b100;
+  }
+
+  &.booking-limited {
+    background-color: orange;
+  }
+
+  &.booking-overbooked {
+    background-color: red;
+  }
+
+  &.unavailable {
+    cursor: no-drop;
+    opacity: 0.5;
+    background-color: #e0e0e0;
+  }
+}
+

@@ -1,0 +1,12 @@
+<div class="tooltip" [class.hasBar]="this.numVal">
+  <div class="arrow arrowLeft"></div>
+  <div class="content">
+    <span>{{this.text}}</span>
+    <mat-progress-bar
+      *ngIf="this.numVal"
+      [value]="this.numVal / this.maxVal * 100"></mat-progress-bar>
+    <div *ngIf="this.numVal">{{this.numVal + ' / ' + this.maxVal}}</div>
+  </div>
+
+
+</div>

@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import { AppDrawerCtrlService } from './app-drawer-ctrl.service';
+import { AppModalCtrlService } from './app-modal-ctrl.service';
 
 @Component({
   selector: 'sp-root',
@@ -7,4 +9,6 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'shift-planning';
+  constructor( public $drawer: AppDrawerCtrlService, public $modal: AppModalCtrlService ) {
+  }
 }

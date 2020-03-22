@@ -1,0 +1,70 @@
+@import '../../../scss/component';
+
+// theme
+$mat-tooltip-target-height: 22px;
+$mat-tooltip-font-size: 10px;
+$mat-tooltip-vertical-padding: ($mat-tooltip-target-height - $mat-tooltip-font-size) / 2;
+
+$mat-tooltip-handset-target-height: 30px;
+$mat-tooltip-handset-font-size: 14px;
+$mat-tooltip-handset-vertical-padding:
+    ($mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size) / 2;
+
+@mixin mat-tooltip-theme($theme) {
+  $background: map-get($theme, background);
+
+  .mat-tooltip {
+    background: mat-color($background, tooltip, 0.9);
+  }
+}
+
+@mixin mat-tooltip-typography($config) {
+  .mat-tooltip {
+    font-family: mat-font-family($config);
+    font-size: $mat-tooltip-font-size;
+    padding-top: $mat-tooltip-vertical-padding;
+    padding-bottom: $mat-tooltip-vertical-padding;
+  }
+
+  .mat-tooltip-handset {
+    font-size: $mat-tooltip-handset-font-size;
+    padding-top: $mat-tooltip-handset-vertical-padding;
+    padding-bottom: $mat-tooltip-handset-vertical-padding;
+  }
+}
+// ---
+
+$mat-tooltip-horizontal-padding: 8px;
+$mat-tooltip-max-width: 250px;
+$mat-tooltip-margin: 14px;
+
+$mat-tooltip-handset-horizontal-padding: 16px;
+$mat-tooltip-handset-margin: 24px;
+
+.mat-tooltip-panel {
+  // The overlay reference updates the pointer-events style property directly on the HTMLElement
+  // depending on the state of the overlay. For tooltips the overlay panel should never enable
+  // pointer events. To overwrite the inline CSS from the overlay reference `!important` is needed.
+  pointer-events: none !important;
+}
+
+.mat-tooltip {
+  color: white;
+  border-radius: 4px;
+  margin: $mat-tooltip-margin;
+  max-width: $mat-tooltip-max-width;
+  padding-left: $mat-tooltip-horizontal-padding;
+  padding-right: $mat-tooltip-horizontal-padding;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include cdk-high-contrast(active, off) {
+    outline: solid 1px;
+  }
+}
+
+.mat-tooltip-handset {
+  margin: $mat-tooltip-handset-margin;
+  padding-left: $mat-tooltip-handset-horizontal-padding;
+  padding-right: $mat-tooltip-handset-horizontal-padding;
+}
