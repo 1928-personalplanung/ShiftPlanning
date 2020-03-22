@@ -1,11 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Http.Features;
 using ShiftPlan.Data;
+using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace ShiftPlan
 {
@@ -28,6 +42,24 @@ namespace ShiftPlan
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            
+
+            // Register the Swagger generator, defining one or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "ShiftPpan API",
+                    Description = "ShiftPpan API",
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var xmlPath = Path.Combine(basePath, "ShiftPlan.xml");
+                c.IncludeXmlComments(xmlPath);
+            });
+
             services.AddDbContext<MainDBContext>();
         }
 
@@ -44,6 +76,14 @@ namespace ShiftPlan
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            // Enable Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Teamwork CSW v1");
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

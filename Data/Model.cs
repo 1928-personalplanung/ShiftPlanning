@@ -55,7 +55,7 @@
     public partial class WorkMode
     {
         [JsonProperty("hoursPerMonth")]
-        public object HoursPerMonth { get; set; }
+        public string HoursPerMonth { get; set; }
         [Key]
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public double? Id { get; set; }
