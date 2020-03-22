@@ -69,7 +69,7 @@ export class DetailDrawerComponent implements OnInit {
 
 
   getRandomShift(){
-    const t = Math.round(Math.random() * 3);
+    const t = Math.floor(Math.random() * 3);
 
     let shift = '';
     switch (t ) {

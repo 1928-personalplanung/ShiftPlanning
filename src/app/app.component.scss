@@ -1,6 +1,11 @@
 @import '../scss/component';
 
 
+::ng-deep .cdk-overlay-container {
+  position: fixed !important;
+  z-index: 10000000000000 !important; /* set value you need */
+}
+
 mat-drawer-container{
   width: 100%;
   height: 100%;
