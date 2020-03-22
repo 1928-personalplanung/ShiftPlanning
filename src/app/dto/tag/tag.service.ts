@@ -32,6 +32,7 @@ export class TagService {
                            return value;
                          });
                          subscriber.next( tagList );
+                         subscriber.complete();
                        },
                        error => subscriber.error( error ),
                        () => subscriber.complete()
