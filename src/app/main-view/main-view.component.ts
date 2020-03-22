@@ -61,7 +61,8 @@ export class MainViewComponent implements OnInit {
     ]).subscribe(
       ([workersList, stations, shiftGroups]) => {
         workersList.forEach( worker => {
-          worker.disableDrag = worker.tags.some( tag => tag.tagType?.type === TagTypes.SICK || tag.tagType?.type === TagTypes.VACATION )
+          worker.disableDrag = worker.tags
+               .some( tag => tag.tagType?.type === TagTypes.SICK || tag.tagType?.type === TagTypes.VACATION );
         });
         this.workers = workersList;
         this.filteredWorkers = workersList;
