@@ -23,6 +23,21 @@
         display: flex;
         flex-direction: column;
 
+
+        .rgroup{
+          label{
+            font-weight: bold;
+            margin: 0 0 .5rem 0;
+          }
+        }
+
+        .radiobuttons{
+          display: flex;
+          flex-direction: column;
+          mat-radio-button{
+            margin: .5rem 0;
+          }
+        }
         mat-checkbox{
           margin:1rem 0;
           color: #ff0000;

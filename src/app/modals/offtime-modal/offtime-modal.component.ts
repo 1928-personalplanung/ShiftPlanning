@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppModalCtrlService } from '../../app-modal-ctrl.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TagTypes } from '../../dto/tag/tag-types.enum';
 
 @Component({
   selector: 'sp-offtime-modal',
@@ -9,6 +10,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class OfftimeModalComponent implements OnInit {
 
+  reasons = [
+    {
+      label: 'Urlaub',
+      value: TagTypes.VACATION
+    },
+    {
+      label: 'Krankheit',
+      value: TagTypes.SICK
+    }
+  ]
 
   offtimeForm: FormGroup;
 
@@ -19,6 +30,7 @@ export class OfftimeModalComponent implements OnInit {
     this.offtimeForm = this.fb.group({
       start: [new Date(), Validators.required],
       end: [new Date(), Validators.required],
+      reason: ['vacation', Validators.required],
       corona: [false],
       note: []
     });

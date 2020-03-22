@@ -16,6 +16,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -31,9 +33,11 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
+    MatSelectModule,
     MatTooltipModule,
     MatProgressBarModule,
     MatToolbarModule,
+    MatRadioModule,
     OverlayModule,
     DragDropModule
   ],
@@ -44,6 +48,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatFormFieldModule,
     MatAutocompleteModule,
     FormsModule,
+    MatRadioModule,
+
+    MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,

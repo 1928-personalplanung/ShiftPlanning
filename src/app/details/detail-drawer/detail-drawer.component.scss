@@ -106,6 +106,13 @@
           }
         }
 
+        &,shifts{
+          ul{
+            li{
+              text-align: center;
+            }
+          }
+        }
         &.adding {
           position: relative;
 

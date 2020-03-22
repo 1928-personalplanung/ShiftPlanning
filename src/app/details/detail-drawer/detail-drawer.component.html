@@ -27,12 +27,10 @@
       ></mat-progress-bar>
     </div>
 
-    <div>
+    <div class="shifts">
       <h3>Letzte 3 Schichten</h3>
       <ul>
-        <li *ngFor="let s of this.data.shifts">
-          {{s}}
-        </li>
+        <li *ngFor="let s of this.data.shifts" [innerHTML]="getRandomShift()"></li>
       </ul>
     </div>
 

@@ -8,6 +8,7 @@ import { Worker } from '../../dto/worker/worker';
 import { share, tap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TagTypes } from '../../dto/tag/tag-types.enum';
+import { DatePipe } from '@angular/common';
 
 @Component ( {
   selector   : 'sp-detail-drawer',
@@ -43,9 +44,8 @@ export class DetailDrawerComponent implements OnInit {
 
 
   ratingStyle;
-
-
   TagTypes = TagTypes;
+
   constructor( public drawer: AppDrawerCtrlService,
                private workers: WorkerService,
                private actR: ActivatedRoute,
@@ -65,6 +65,30 @@ export class DetailDrawerComponent implements OnInit {
 
   close() {
     this.drawer.closeDrawer ();
+  }
+
+
+  getRandomShift(){
+    let t = Math.round(Math.random() * 3);
+
+    const shift = ''
+    switch (t ) {
+      case 0:
+        t = '<b>Früh</b> - ';
+        break;
+
+      case 1:
+        t = '<b>Spät</b> - ';
+        break;
+
+      case 2:
+        t = '<b>Nacht</b> - ';
+        break;
+    }
+
+    const d = new Date(Math.floor(Math.round(Math.random() * new Date().getTime())))
+    t = t + new DatePipe('de').transform(d, 'dd.MM.yyyy');
+    return t;
   }
 
 

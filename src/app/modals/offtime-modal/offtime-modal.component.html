@@ -18,6 +18,15 @@
         <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
         <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
+
+      <div class="rgroup" >
+        <label id="rlabel">Grund der Abwesenheit</label>
+        <mat-radio-group formControlName="reason" aria-labelledby="rlabel" class="radiobuttons">
+          <mat-radio-button class="example-radio-button" *ngFor="let r of reasons" [value]="r.value">
+            {{r.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
         <mat-checkbox formControlName="corona">Corona</mat-checkbox>
 
       <mat-form-field class="comment">

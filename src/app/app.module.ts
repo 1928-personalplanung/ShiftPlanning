@@ -9,6 +9,10 @@ import {MainViewModule} from './main-view/main-view.module';
 import {DetailsModule} from './details/details.module';
 import {ModalsModule} from './modals/modals.module';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
