@@ -7,6 +7,8 @@ import { PlannerService } from './main-view/planner.service';
 import { map } from 'rxjs/operators';
 import { Shift } from './dto/shift/shift';
 import { start } from 'repl';
+import { TagService } from './dto/tag/tag.service';
+import { WorkerService } from './dto/worker/worker.service';
 
 @Component ( {
   selector   : 'sp-root',
@@ -18,10 +20,20 @@ export class AppComponent {
 
   constructor( public $drawer: AppDrawerCtrlService,
                public $modal: AppModalCtrlService,
-               public $planner: PlannerService
+               public $planner: PlannerService,
+               public $tag: TagService,
+               public $worker: WorkerService
                ) {
-    $planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
+    // $planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
+    //         .subscribe( n => console.log (n));
+    // $tag.getList()
+    //         .subscribe( n => console.log (n));
+    // $tag.getList( 1 )
+    //         .subscribe( n => console.log (n));
+    $worker.getList(  )
             .subscribe( n => console.log (n));
+    // $worker.getByID( 1 )
+    //         .subscribe( n => console.log (n));
 
 
   }
