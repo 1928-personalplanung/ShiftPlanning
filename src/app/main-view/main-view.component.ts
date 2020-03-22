@@ -9,7 +9,8 @@ import {StationService} from '../dto/station/station.service';
 import {AppDrawerCtrlService} from '../app-drawer-ctrl.service';
 import {Worker} from '../dto/worker/worker';
 import {PlannerService, ShiftGroupListItem} from './planner.service';
-import { Station } from '../dto/station/station';
+import {Station} from '../dto/station/station';
+import {TagTypes} from '../dto/tag/tag-types.enum';
 
 @Component({
   selector: 'sp-main-view',
@@ -59,11 +60,15 @@ export class MainViewComponent implements OnInit {
       this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 ).pipe(first())
     ]).subscribe(
       ([workersList, stations, shiftGroups]) => {
+        workersList.forEach( worker => {
+          worker.disableDrag = worker.tags.some( tag => tag.tagType?.type === TagTypes.SICK || tag.tagType?.type === TagTypes.VACATION )
+        });
         this.workers = workersList;
         this.filteredWorkers = workersList;
         this.stations = stations;
         this.stationControl = new FormControl(this.stations[0]);
         this.shiftGroups = shiftGroups;
+        console.log(this.workers, this.shiftGroups);
       }
     );
 
