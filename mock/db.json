@@ -882,5 +882,20 @@
         "score": 94
       }
     ]
+  ],
+  "shift": [
+    {
+      "id": 1,
+      "shiftTypeId": 1,
+      "constrains": [
+        {
+          "type": "required",
+          "value": 8,
+          "templateId": 0
+        }
+      ],
+      "startDate": 1584856500,
+      "endDate": 1584888600
+    }
   ]
 }
