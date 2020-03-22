@@ -70,108 +70,15 @@ $base-url: '/assets/' !default;
 
 /// Custom Material Design palette
 /// @group material
-$mat-shift-planning-primary: (
-  50 : #e7e7e7,
-  100 : #c4c4c4,
-  200 : #9c9c9c,
-  300 : #747474,
-  400 : #474747,
-  500 : #393939,
-  600 : #333,
-  700 : #2c2c2c,
-  800 : #242424,
-  900 : #171717,
-  A100 : #ef7171,
-  A200 : #ea4343,
-  A400 : #fa0000,
-  A700 : #e00000,
-  contrast: (
-    50 : #000,
-    100 : #000,
-    200 : #000,
-    300 : #fff,
-    400 : #fff,
-    500 : #fff,
-    600 : #fff,
-    700 : #fff,
-    800 : #fff,
-    900 : #fff,
-    A100 : #000,
-    A200 : #fff,
-    A400 : #fff,
-    A700 : #fff,
-  )
-);
+$mat-shift-planning-primary: $mat-indigo;
 
 /// Custom Material Design palette
 /// @group material
-$mat-shift-planning-accent: (
-  50 : #fdede5,
-  100 : #fbd1bf,
-  200 : #f8b294,
-  300 : #f59369,
-  400 : #f37c49,
-  500 : #f16529,
-  600 : #ef5d24,
-  700 : #ed531f,
-  800 : #eb4919,
-  900 : #e7370f,
-  A100 : #fff,
-  A200 : #ffe4e0,
-  A400 : #ffb9ad,
-  A700 : #ffa493,
-  contrast: (
-    50 : #000,
-    100 : #000,
-    200 : #000,
-    300 : #000,
-    400 : #000,
-    500 : #000,
-    600 : #000,
-    700 : #fff,
-    800 : #fff,
-    900 : #fff,
-    A100 : #000,
-    A200 : #000,
-    A400 : #000,
-    A700 : #000,
-  )
-);
+$mat-shift-planning-accent: $mat-pink;
 
 /// Custom Material Design palette
 /// @group material
-$mat-shift-planning-warn: (
-  50 : #fdede5,
-  100 : #fbd1bf,
-  200 : #f8b294,
-  300 : #f59369,
-  400 : #f37c49,
-  500 : #f16529,
-  600 : #ef5d24,
-  700 : #ed531f,
-  800 : #eb4919,
-  900 : #e7370f,
-  A100 : #fff,
-  A200 : #ffe4e0,
-  A400 : #ffb9ad,
-  A700 : #ffa493,
-  contrast: (
-    50 : #000,
-    100 : #000,
-    200 : #000,
-    300 : #000,
-    400 : #000,
-    500 : #000,
-    600 : #000,
-    700 : #fff,
-    800 : #fff,
-    900 : #fff,
-    A100 : #000,
-    A200 : #000,
-    A400 : #000,
-    A700 : #000,
-  )
-);
+$mat-shift-planning-warn: $mat-red;
 
 /// Define the primary palette for your theme using the Material Design palettes.
 /// For each palette, you can optionally specify a default, lighter, and darker hue.

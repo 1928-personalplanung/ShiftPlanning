@@ -48,7 +48,7 @@ export class PlannerService {
     return this.getShiftFromRange ( startDate, durationDay )
                .pipe (
                  map ( shifts => {
-                   const shiftGroups = this.generateEmptyGroupList();
+                   const shiftGroups = this.generateEmptyGroupList ( durationDay );
                    shifts.forEach ( ( shift, index ) => {
                      this.fitToGroup ( shift, shiftGroups );
                    } );
@@ -59,7 +59,7 @@ export class PlannerService {
 
   private fitToGroup( shift: Shift, shiftGroups: ShiftGroupListItem[] ) {
     const startHoure = new Date ( shift.startDate * 1000 ).getHours ();
-    const base = {disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null};
+    const base       = { disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null };
     let targetGroup: ShiftGroupListItem;
     if ( startHoure < 10 ) {
       targetGroup = shiftGroups[ 1 ];
@@ -68,14 +68,31 @@ export class PlannerService {
     } else {
       targetGroup = shiftGroups[ 2 ];
     }
-    targetGroup.shifts.push ( {...shift, ...base} );
+    targetGroup.shifts[6] = { ...targetGroup.shifts[6], ...shift, ...base };
   }
 
-  private generateEmptyGroupList(): ShiftGroupListItem[] {
+  private generateEmptyGroupList( durationDay: number ): ShiftGroupListItem[] {
     return [
-      { label: 'Frueh', icon: 'brightness_5', shifts: [] },
-      { label: 'Spaet', icon: 'wb_sunny', shifts: [] },
-      { label: 'Nacht', icon: 'brightness_3', shifts: [] }
+      { label: 'Frueh', icon: 'brightness_5', shifts: this.getDummyShitItemList ( durationDay, 8, 3 ) },
+      { label: 'Spaet', icon: 'wb_sunny', shifts: this.getDummyShitItemList ( durationDay, 4, 7 ) },
+      { label: 'Nacht', icon: 'brightness_3', shifts: this.getDummyShitItemList ( durationDay, 9, 12 ) }
     ];
+  }
+
+  private getDummyShitItem( num: number, disbaleNum: number, notSatisfiedNum: number ): ShiftDragDropItem {
+    const base = {
+      disabled    : num === disbaleNum,
+      disabledMsg : null,
+      notSatisfied: num === notSatisfiedNum, notSatisfiedMsg: null
+    };
+    return { ...base, workers: [] };
+  }
+
+  private getDummyShitItemList( num: number = 14, disbaleNum: number, notSatisfiedNum: number ): ShiftDragDropItem[] {
+    const list: ShiftDragDropItem[] = [];
+    for ( let i = 0; i < num; i ++ ) {
+      list.push ( this.getDummyShitItem ( i, disbaleNum, notSatisfiedNum ) );
+    }
+    return list;
   }
 }
