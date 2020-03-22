@@ -34,8 +34,8 @@ export class ShiftService {
                      .subscribe(
                        workerMap =>  {
                          shifts.map ( shift => {
-                           shift.worker = shift.forLocalMockWorkerIDs
-                                               .map( id => workerMap.get( id ) );
+                           shift.workers = shift.forLocalMockWorkerIDs
+                                                .map( id => workerMap.get( id ) );
                          } );
                          subscriber.next( shifts );
                        },

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, merge, Observable, of } from 'rxjs';
 import { Worker } from './worker';
 import { environment } from '../../../environments/environment';
-import { switchMap, tap } from 'rxjs/operators';
+import { mergeAll, switchMap, tap } from 'rxjs/operators';
 import { TagService } from '../tag/tag.service';
 
 @Injectable ( {
@@ -16,14 +16,12 @@ export class WorkerService {
 
   getList(): Observable<Worker[]> {
     return this.http.get<Worker[]> ( environment.api.worker )
-               // .pipe (
-               //   switchMap ( workers => {
-               //     return forkJoin ( workers.map ( value => value.id )
-               //                       .map ( id => this.getByID ( id ) ) ).pipe(
-               //                         tap( n => console.log( n ))
-               //     );
-               //   } )
-               // );
+               .pipe (
+                 switchMap ( workers => {
+                   const observerlist = workers.map ( value => this.getByID ( value.id ) );
+                   return forkJoin ( observerlist );
+                 } )
+               );
   }
 
   getByID( id: number ): Observable<Worker> {
@@ -36,6 +34,7 @@ export class WorkerService {
                            tags => {
                              workerResponse.tags = tags;
                              subscriber.next ( workerResponse );
+                             subscriber.complete();
                            },
                            error => subscriber.error ( error ),
                            () => subscriber.complete ()

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Worker } from '../dto/worker';
-import { TagTypes } from '../dto/tag-types.enum';
+import { Worker } from '../dto/worker/worker';
+import { TagTypes } from '../dto/tag/tag-types.enum';
+import { PlannerService, ShiftGroupListItem } from './planner.service';
 
 @Component({
   selector: 'sp-main-view',
@@ -25,7 +26,7 @@ export class MainViewComponent implements OnInit {
     { id: 4, name: 'Mitarbeiter 4', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
         workerId: 456,
-        tagTypeId: TagTypes.SICK,
+        tagTypeId: 1,
         startDate: 1584873478753,
         endDate  : 1584873478754,
       }], score: 0.5 },
@@ -34,7 +35,7 @@ export class MainViewComponent implements OnInit {
     { id: 7, name: 'Mitarbeiter 7', hoursWorkedInCurrentMonth: 20, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
         workerId: 456,
-        tagTypeId: TagTypes.VACATION,
+        tagTypeId: 2,
         startDate: 1584873478753,
         endDate  : 1584873478754,
       }], score: 0.5 },
@@ -47,7 +48,7 @@ export class MainViewComponent implements OnInit {
     { id: 14, name: 'Mitarbeiter 14', hoursWorkedInCurrentMonth: 35, targetHoursInCurrentMonth: 40, tags: [{
         id       : 1234,
         workerId: 456,
-        tagTypeId: TagTypes.SICK,
+        tagTypeId: 11,
         startDate: 1584873478753,
         endDate  : 1584873478754,
       }], score: 0.5 },
@@ -55,7 +56,7 @@ export class MainViewComponent implements OnInit {
       id: 15, name: 'Mitarbeiter 15', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [ {
         id       : 1234,
         workerId: 456,
-        tagTypeId: TagTypes.VACATION,
+        tagTypeId: 22,
         startDate: 1584873478753,
         endDate  : 1584873478754
       } ],
@@ -81,87 +82,93 @@ export class MainViewComponent implements OnInit {
     'Sonntag 21.'
   ];
 
-  readonly shiftGroups = [
-    {
-      label: 'Frueh',
-      icon: 'brightness_5',
-      shifts: [
-        {id: 1, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 2, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 3, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {
-          id: 4,
-          workers: [],
-          disabled: false,
-          disabledMsg: null,
-          notSatisfied: false,
-          notSatisfiedMsg: null
-        },
-        {id: 5, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 6, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 7, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-
-        {id: 8, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 9, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 10, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 11, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 12, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 13, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 14, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
-      ]
-    },
-    {
-      label: 'Spaet',
-      icon: 'wb_sunny',
-      shifts: [
-        {id: 15, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 16, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 17, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 18, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 19, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlen noch 2 Mitarbeiter'},
-        {id: 20, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 21, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-
-        {id: 22, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 23, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 24, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 25, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 26, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 27, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 28, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
-      ]
-    },
-    {
-      label: 'Nacht',
-      icon: 'brightness_3',
-      shifts: [
-        {id: 29, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 30, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 31, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 32, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 33, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 34, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 35, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlt noch 1 Mitarbeiter'},
-
-        {id: 36, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 37, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 38, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 39, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 40, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 41, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
-        {id: 42, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
-      ]
-    }
-  ];
+  // readonly shiftGroups = [
+  //   {
+  //     label: 'Frueh',
+  //     icon: 'brightness_5',
+  //     shifts: [
+  //       {id: 1, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 2, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 3, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {
+  //         id: 4,
+  //         workers: [],
+  //         disabled: false,
+  //         disabledMsg: null,
+  //         notSatisfied: false,
+  //         notSatisfiedMsg: null
+  //       },
+  //       {id: 5, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 6, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 7, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //
+  //       {id: 8, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 9, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 10, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 11, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 12, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 13, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 14, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
+  //     ]
+  //   },
+  //   {
+  //     label: 'Spaet',
+  //     icon: 'wb_sunny',
+  //     shifts: [
+  //       {id: 15, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 16, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 17, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 18, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 19, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlen noch 2 Mitarbeiter'},
+  //       {id: 20, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 21, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //
+  //       {id: 22, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 23, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 24, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 25, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 26, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 27, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 28, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
+  //     ]
+  //   },
+  //   {
+  //     label: 'Nacht',
+  //     icon: 'brightness_3',
+  //     shifts: [
+  //       {id: 29, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 30, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 31, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 32, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 33, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 34, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 35, workers: [], disabled: false, disabledMsg: null, notSatisfied: true, notSatisfiedMsg: 'Es fehlt noch 1 Mitarbeiter'},
+  //
+  //       {id: 36, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 37, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 38, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 39, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 40, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 41, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null},
+  //       {id: 42, workers: [], disabled: false, disabledMsg: null, notSatisfied: false, notSatisfiedMsg: null}
+  //     ]
+  //   }
+  // ];
 
   stationControl = new FormControl(null);
+  shiftGroups: ShiftGroupListItem[];
 
-  constructor() {
+  constructor( private $planner: PlannerService) {
   }
 
   ngOnInit(): void {
     // todo remove mock
-    this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+    // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+    this.$planner.getShiftFromRangeGrouped ( '2020-03-16T00:00:00', 14 )
+             .subscribe( n => {
+               this.shiftGroups = n;
+               // this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
+             } );
   }
 
   prevWeeks() {
@@ -187,7 +194,7 @@ export class MainViewComponent implements OnInit {
 
     // todo reset disabled
 
-    // aus der worker list in zelle - check disabled -> copy
+    // aus der workers list in zelle - check disabled -> copy
     if (event.previousContainer.id === 'workers-drop-list' && event.container.id !== 'workers-drop-list') {
       if (!event.container.data.disabled) {
         copyArrayItem(
@@ -214,11 +221,11 @@ export class MainViewComponent implements OnInit {
         );
       }
 
-    // von zelle zu worker list -> remove von zelle
+    // von zelle zu workers list -> remove von zelle
     } else if (event.previousContainer.id !== 'workers-drop-list' && event.container.id === 'workers-drop-list') {
       event.previousContainer.data.workers.splice(event.previousIndex, 1);
 
-    // von worker list zu worker list -> ignore
+    // von workers list zu workers list -> ignore
     } else {
 
     }

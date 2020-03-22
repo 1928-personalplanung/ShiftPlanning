@@ -7,6 +7,6 @@ export interface Shift {
   constrains: Constrain[];
   startDate: number;
   endDate: number;
-  worker?: Worker[];
+  workers?: Worker[];
   forLocalMockWorkerIDs?: number[];
 }

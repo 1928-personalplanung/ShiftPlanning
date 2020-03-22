@@ -28,9 +28,9 @@ export class AppComponent {
     //         .subscribe( n => console.log (n));
     // $tag.getList( 1 )
     //         .subscribe( n => console.log (n));
-    $worker.getList(  )
-            .subscribe( n => console.log (n));
-    // $worker.getByID( 1 )
+    // $workers.getList(  )
+    //         .subscribe( n => console.log (n));
+    // $workers.getByID( 1 )
     //         .subscribe( n => console.log (n));
 
 

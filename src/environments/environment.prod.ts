@@ -9,7 +9,7 @@ export const environment = {
     workmode  : '/api/workmode/',
     shifttype : '/api/shifttype/',
     discipline: '/api/discipline/',
-    worker    : '/api/worker/',
+    worker    : '/api/workers/',
     shift     : '/api/shift/'
   }
 };

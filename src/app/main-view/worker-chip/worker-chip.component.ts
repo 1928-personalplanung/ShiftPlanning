@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
-import { Worker } from '../../dto/worker';
-import { TagTypes } from '../../dto/tag-types.enum';
+import { Worker } from '../../dto/worker/worker';
+import { TagTypes } from '../../dto/tag/tag-types.enum';
 
 @Component({
   selector: 'sp-worker-chip',
@@ -46,7 +46,7 @@ export class WorkerChipComponent implements OnInit {
   get isSick() {
     // fixme compare for current shown date-range
     for ( const tag of this.worker.tags ) {
-      if ( tag.tagTypeId === TagTypes.SICK ) {
+      if ( tag.tagType?.type === TagTypes.SICK ) {
         return true;
       }
     }
@@ -57,7 +57,7 @@ export class WorkerChipComponent implements OnInit {
   get isOnVacation() {
     // fixme compare for current shown date-range
     for ( const tag of this.worker.tags ) {
-      if ( tag.tagTypeId === TagTypes.VACATION ) {
+      if ( tag.tagType?.type === TagTypes.VACATION ) {
         return true;
       }
     }
