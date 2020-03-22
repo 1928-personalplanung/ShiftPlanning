@@ -69,7 +69,7 @@ export class DetailDrawerComponent implements OnInit {
 
 
   getRandomShift(){
-    let t = Math.round(Math.random() * 3);
+    let t = Math.floor(Math.random() * 3);
 
     const shift = ''
     switch (t ) {
@@ -81,7 +81,7 @@ export class DetailDrawerComponent implements OnInit {
         t = '<b>Spät</b> - ';
         break;
 
-      case 2:
+      default:
         t = '<b>Nacht</b> - ';
         break;
     }
