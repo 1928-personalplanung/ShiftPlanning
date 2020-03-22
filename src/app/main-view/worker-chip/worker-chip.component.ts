@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
-import {Worker} from '../../dto/worker';
+import { Worker } from '../../dto/worker';
+import { TagTypes } from '../../dto/tag-types.enum';
 
 @Component({
   selector: 'sp-worker-chip',
@@ -10,6 +11,7 @@ import {Worker} from '../../dto/worker';
 export class WorkerChipComponent implements OnInit {
 
   private pWorker: Worker;
+
   @Input('worker')
   get worker(): Worker {
     return this.pWorker;
@@ -19,6 +21,49 @@ export class WorkerChipComponent implements OnInit {
   }
 
   constructor() { }
+
+  @HostBinding( 'class.unavailable' )
+  get isUnavailable() {
+    return this.isSick || this.isOnVacation;
+  }
+
+  @HostBinding( 'class.booking-available' )
+  get isBookingAvailable() {
+    return this.worker.hoursWorkedInCurrentMonth < this.worker.targetHoursInCurrentMonth * 0.8;
+  }
+
+  @HostBinding( 'class.booking-limited' )
+  get isBookingLimited() {
+    return this.worker.hoursWorkedInCurrentMonth >= this.worker.targetHoursInCurrentMonth * 0.8 &&
+        this.worker.hoursWorkedInCurrentMonth <= this.worker.targetHoursInCurrentMonth;
+  }
+
+  @HostBinding( 'class.booking-overbooked' )
+  get isBookingOverbooked() {
+    return this.worker.hoursWorkedInCurrentMonth > this.worker.targetHoursInCurrentMonth;
+  }
+
+  get isSick() {
+    // fixme compare for current shown date-range
+    for ( const tag of this.worker.tags ) {
+      if ( tag.tagTypeId === TagTypes.SICK ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  get isOnVacation() {
+    // fixme compare for current shown date-range
+    for ( const tag of this.worker.tags ) {
+      if ( tag.tagTypeId === TagTypes.VACATION ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 
   ngOnInit(): void {
   }

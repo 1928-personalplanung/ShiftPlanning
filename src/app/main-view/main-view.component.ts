@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem, CdkDragStart} from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { CdkDragDrop, CdkDragStart, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Worker } from '../dto/worker';
+import { TagTypes } from '../dto/tag-types.enum';
 
 @Component({
   selector: 'sp-main-view',
@@ -16,22 +18,48 @@ export class MainViewComponent implements OnInit {
     {id: 4, label: 'Station 4'},
   ];
 
-  readonly workers = [
-    {id: 1, name: 'Mitarbeiter 1', hoursWorked: 30, targetHours: 40},
-    {id: 2, name: 'Mitarbeiter 2', hoursWorked: 42, targetHours: 40},
-    {id: 3, name: 'Mitarbeiter 3', hoursWorked: 30, targetHours: 40},
-    {id: 4, name: 'Mitarbeiter 4', hoursWorked: 30, targetHours: 40},
-    {id: 5, name: 'Mitarbeiter 5', hoursWorked: 45, targetHours: 40},
-    {id: 6, name: 'Mitarbeiter 6', hoursWorked: 30, targetHours: 20},
-    {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
-    {id: 8, name: 'Mitarbeiter 8', hoursWorked: 30, targetHours: 40},
-    {id: 9, name: 'Mitarbeiter 9', hoursWorked: 15, targetHours: 40},
-    {id: 10, name: 'Mitarbeiter 10', hoursWorked: 30, targetHours: 40},
-    {id: 11, name: 'Mitarbeiter 11', hoursWorked: 30, targetHours: 40},
-    {id: 12, name: 'Mitarbeiter 12', hoursWorked: 32, targetHours: 25},
-    {id: 13, name: 'Mitarbeiter 13', hoursWorked: 30, targetHours: 40},
-    {id: 14, name: 'Mitarbeiter 14', hoursWorked: 35, targetHours: 40},
-    {id: 15, name: 'Mitarbeiter 15', hoursWorked: 30, targetHours: 40}
+  readonly workers: Worker[] = [
+    { id: 1, name: 'Mitarbeiter 1', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 2, name: 'Mitarbeiter 2', hoursWorkedInCurrentMonth: 42, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 3, name: 'Mitarbeiter 3', hoursWorkedInCurrentMonth: 36, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 4, name: 'Mitarbeiter 4', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [{
+        id       : 1234,
+        workerId: 456,
+        tagTypeId: TagTypes.SICK,
+        startDate: 1584873478753,
+        endDate  : 1584873478754,
+      }] },
+    { id: 5, name: 'Mitarbeiter 5', hoursWorkedInCurrentMonth: 45, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 6, name: 'Mitarbeiter 6', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 20, tags: [] },
+    { id: 7, name: 'Mitarbeiter 7', hoursWorkedInCurrentMonth: 20, targetHoursInCurrentMonth: 40, tags: [{
+        id       : 1234,
+        workerId: 456,
+        tagTypeId: TagTypes.VACATION,
+        startDate: 1584873478753,
+        endDate  : 1584873478754,
+      }] },
+    { id: 8, name: 'Mitarbeiter 8', hoursWorkedInCurrentMonth: 39, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 9, name: 'Mitarbeiter 9', hoursWorkedInCurrentMonth: 15, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 10, name: 'Mitarbeiter 10', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 11, name: 'Mitarbeiter 11', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 12, name: 'Mitarbeiter 12', hoursWorkedInCurrentMonth: 32, targetHoursInCurrentMonth: 25, tags: [] },
+    { id: 13, name: 'Mitarbeiter 13', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [] },
+    { id: 14, name: 'Mitarbeiter 14', hoursWorkedInCurrentMonth: 35, targetHoursInCurrentMonth: 40, tags: [{
+        id       : 1234,
+        workerId: 456,
+        tagTypeId: TagTypes.SICK,
+        startDate: 1584873478753,
+        endDate  : 1584873478754,
+      }] },
+    {
+      id: 15, name: 'Mitarbeiter 15', hoursWorkedInCurrentMonth: 30, targetHoursInCurrentMonth: 40, tags: [ {
+        id       : 1234,
+        workerId: 456,
+        tagTypeId: TagTypes.VACATION,
+        startDate: 1584873478753,
+        endDate  : 1584873478754,
+      } ],
+    },
   ];
 
   readonly days = [
@@ -59,18 +87,10 @@ export class MainViewComponent implements OnInit {
         {id: 1, workers: [], disabled: false, disabledMsg: null},
         {id: 2, workers: [], disabled: false, disabledMsg: null},
         {id: 3, workers: [], disabled: false, disabledMsg: null},
-        {
-          id: 4,
-          workers: [
-            {id: 7, name: 'Mitarbeiter 7', hoursWorked: 20, targetHours: 40},
-          ],
-          disabled: false,
-          disabledMsg: null
-        },
+        {id: 4, workers: [], disabled: false, disabledMsg: null},
         {id: 5, workers: [], disabled: false, disabledMsg: null},
         {id: 6, workers: [], disabled: false, disabledMsg: null},
         {id: 7, workers: [], disabled: false, disabledMsg: null},
-
         {id: 8, workers: [], disabled: false, disabledMsg: null},
         {id: 9, workers: [], disabled: false, disabledMsg: null},
         {id: 10, workers: [], disabled: false, disabledMsg: null},
@@ -128,6 +148,8 @@ export class MainViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // todo remove mock
+    this.shiftGroups[0].shifts[2].workers.push(this.workers[3]);
   }
 
   prevWeeks() {
