@@ -12,5 +12,4 @@ export interface Worker {
   tags: Tag[]; // Backend müsste die TAGs n Tage in die Vergangenheit und Zukunft
   hoursWorkedInCurrentMonth: number;
   score: number;
-  // targetHoursInCurrentMonth?: number; // todo
 }

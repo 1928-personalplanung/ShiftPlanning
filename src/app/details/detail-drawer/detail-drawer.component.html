@@ -15,10 +15,10 @@
       </div>
 
     </div>
-    <div class="hours">
-      <span>{{(this.worker | async)?.hoursWorkedInCurrentMonth + ' / ' + (this.worker | async)?.targetHoursInCurrentMonth + ' Stunden geplant'}}</span>
+    <div class="hours" *ngIf="this.worker | async as myWorker">
+      <span>{{myWorker?.hoursWorkedInCurrentMonth + ' / ' + myWorker?.workMode.hoursPerMonth + ' Stunden geplant'}}</span>
       <mat-progress-bar
-        [value]="((this.worker | async)?.hoursWorkedInCurrentMonth / (this.worker | async)?.targetHoursInCurrentMonth) * 100"
+        [value]="(myWorker?.hoursWorkedInCurrentMonth / myWorker?.workMode.hoursPerMonth) * 100"
 
       ></mat-progress-bar>
     </div>
